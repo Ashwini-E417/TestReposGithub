@@ -1,23 +1,23 @@
-/* body,
+body,
 button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
-} */
+}
 
 :root {
   --fontPrimary : #b89c94;
 
 
   --fontPrimary : #ba9a50;
-  --fontSecondary : #fff;
-  --bgColorPrimary: #000;
-  --bgColorSecondary : #111;
+  --fontSecondary : #6d6d6d;
+  --bgColorPrimary: #fff;
+  --bgColorSecondary : #fafafa;
 }
 
-/* .bannerIntroText,
+.bannerIntroText,
 .offerText {
   text-transform: capitalize;
-  letter-spacing: normal
-} */
+  /* letter-spacing: normal */
+}
 
 .headerLink,
 .map-link-text,
@@ -45,7 +45,7 @@ button {
   border: 0
 }
 
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box
@@ -114,7 +114,7 @@ body {
   flex: 1;
   justify-content: center;
   margin: 0 50px
-} */
+}
 @media (max-width:1280px) {
   .headerNav {
     gap: 10px;
@@ -126,7 +126,7 @@ body {
 
 
 
-/* .headerContactSection {
+.headerContactSection {
   display: flex;
   align-items: center;
   gap: 15px
@@ -159,7 +159,7 @@ body {
 .headerWhatsapp:hover {
   background: linear-gradient(135deg, #1ebe57 0, #25d366 100%);
   transform: translateY(-2px)
-} */
+}
 
 /* .bannerSectionMain {
   width: 100%;
@@ -362,8 +362,7 @@ body {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  transition: .3s;
-  width: 100%;
+  transition: .3s
 }
 
 /* .bannerOffer:hover {
@@ -396,7 +395,7 @@ body {
 
 .offerText {
   display: block;
-  font-size: 16px;
+  font-size: 1.1vw;
   font-weight: 500;
   color: var(--fontPrimary);
   margin-bottom: 5px
@@ -564,14 +563,14 @@ body {
 
 .quotePopupContent {
   position: relative;
-  background: var(--bgColorPrimary);
+  background: #ffffff;
   border-radius: 20px;
   padding: 40px;
   max-width: 500px;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 0px 3px var(--fontPrimary);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
   border: 1px solid rgba(0, 0, 0, .1);
   animation: .3s ease-out popupSlideIn;
   z-index: 1
@@ -620,8 +619,7 @@ body {
 .quotePopup .quoteTitle {
   font-size: 28px;
   margin-bottom: 1.5vhx;
-  text-align: center;
-  line-height: 1.5;
+  text-align: center
 }
 
 .quotePopup .quoteSubTitle {
@@ -646,7 +644,7 @@ body {
 
 .overviewSection {
   background: var(--bgColorPrimary);
-  padding: 25px 0 35px
+  padding: 25px 0 0px
 }
 
 .overviewContainer {
@@ -746,7 +744,7 @@ body {
   max-width: 600px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 0px 20px rgba(0, 0, 0, .3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
   border: 2px solid rgba(229, 185, 115, .2);
   transition: transform .3s
 }
@@ -844,7 +842,7 @@ body {
     top: 70px;
     left: 0;
     right: 0;
-    background: #000;
+    background: #fff;
     flex-direction: column;
     padding: 30px 20px;
     gap: 25px;
@@ -856,8 +854,7 @@ body {
     max-height: calc(100vh - 70px);
     overflow-y: auto;
     margin: 0;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 3px var(--fontPrimary);
+    backdrop-filter: blur(10px)
   }
 
   .headerNav.active {
@@ -1194,7 +1191,7 @@ body {
 .price-card {
   background: rgba(255, 255, 255, .05);
   border-radius: 20px;
-  padding: 15px;
+  padding: 5px;
   border: 1px solid var(--fontPrimary);
   transition: .3s;
   backdrop-filter: blur(10px);
@@ -1240,7 +1237,7 @@ body {
 .price-row {
   /* display: flex;
   align-items: center; */
-  padding: 0px 0 5px;
+  padding: 0px 0 12px;
   /* border-bottom: 1px solid #ccc; */
   line-height: 1.5;
   display: block;
@@ -1689,13 +1686,12 @@ body {
 }
 
 .map-dropdown {
-  background: var(--bgColorPrimary);
+  background: #ffffff;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, .1);
   overflow: hidden;
   transition: .3s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
-  border: 1px solid var(--fontPrimary);
 }
 .map-dropdown:hover {
   background: rgba(255, 255, 255, .08);
@@ -1740,7 +1736,7 @@ body {
   max-height: 0;
   overflow: hidden;
   transition: max-height .3s;
-  background: var(--bgColorSecondary);
+  background: #f8f9fa;
 }
 
 .map-dropdown-content.active {
@@ -1798,7 +1794,7 @@ body {
   flex: 1;
   max-width: 660px;
   text-align: center;
-  /* background: rgba(255, 255, 255, .05); */
+  background: rgba(255, 255, 255, .05);
   border-radius: 20px;
   padding: 0px;
   /* border: 1px solid #ccc; */
@@ -1944,13 +1940,13 @@ body {
 
 .footerDisclaimer,
 .footerLinks p {
-  font-size: 14px;
+  font-size: 10px;
   text-align: center
 }
 
 .footerContainer {
-  background: var(--bgColorSecondary);
-  color: var(--fontSecondary);
+  background: #f3f3f3;
+  color: #555;
   padding: 60px 0 30px;
   border-top: 1px solid rgba(0, 0, 0, .1);
 }
@@ -1962,8 +1958,8 @@ body {
 .footerAdvertiser,
 .footerProjectNumber,
 .footerRegistration {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 10px;
+  line-height: 1.2;
   color: var(--fontSecondary);
   margin-bottom: 5px;
   text-align: center
@@ -2167,12 +2163,13 @@ body {
     padding-top: 125%
   } */
 
-  .bannerContentSection {
+  /* .bannerContentSection {
     flex: none;
     order: 2;
     padding: 40px 25px;
-    min-height: auto
-  }
+    min-height: auto;
+    border-bottom: 1px solid var(--fontPrimary);
+  } */
  /*
   .bannerMainTitle {
     font-size: 40px;
@@ -2350,7 +2347,7 @@ body {
   }
 
   .price-card {
-    /* background: rgba(255, 255, 255, .05); */
+    background: rgba(255, 255, 255, .05);
     border-radius: 20px;
     padding: 15px;
     border: 1px solid var(--fontPrimary);
@@ -2666,13 +2663,13 @@ body {
   .footerAdvertiser,
   .footerProjectNumber,
   .footerRegistration {
-    font-size: 13px;
+    font-size: 10px;
     margin-bottom: 10px
   }
 
   .footerDisclaimer {
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: 25px
   }
 
@@ -2717,7 +2714,7 @@ body {
     padding: 12px
   }
 
-  /* .headerContainer {
+  .headerContainer {
     height: 65px;
     padding: 0 15px
   }
@@ -2729,7 +2726,7 @@ body {
   .headerNav {
     top: 65px;
     padding: 25px 15px
-  } */
+  }
 
   /* .bannerSectionMain {
     padding-top: 65px;
@@ -2873,7 +2870,7 @@ body {
   }
 
   .price-card {
-    /* background: #ffffff; */
+    background: #ffffff;
     border-radius: 15px;
     /* padding: 12px; */
     padding: 5px;
@@ -2905,8 +2902,7 @@ body {
     height: 100px;
     overflow: hidden;
     border-radius: 6px;
-    margin-bottom: 12px;
-    display: none;
+    margin-bottom: 12px
   }
 
   .price-floor-plan img {
@@ -2940,22 +2936,22 @@ body {
 
   .price-label {
     font-size: 13px;
-    color: var(--fontSecondary);
+    color: #333;
     font-weight: 400;
     /* letter-spacing: normal; */
   }
 
   .price-value {
     font-size: 16px;
-    color: var(--fontSecondary);
-    font-weight: 600;
+    color: #333333;
+    font-weight: 400;
     /* letter-spacing: normal; */
 }
 
   .price-value.highlight {
     color: var(--fontPrimary);
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 
   }
 
@@ -3170,13 +3166,13 @@ body {
   .footerAdvertiser,
   .footerProjectNumber,
   .footerRegistration {
-    font-size: 12px;
+    font-size: 9px;
     margin-bottom: 8px
   }
 
   .footerDisclaimer {
     padding: 0 15px;
-    font-size: 12px;
+    font-size: 9px;
     margin-bottom: 20px
   }
 
@@ -3190,8 +3186,7 @@ body {
   }
 
   .aboutSectionQr img {
-    height: 80px !important;
-    width: auto;
+    height: 80px !important
   }
 }
 
@@ -3203,7 +3198,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #000;
+  background-color: #ffffff;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, .1);
   padding: 0px;
   z-index: 100;
@@ -3217,7 +3212,7 @@ body {
   padding: 10px;
   font-size: 14px;
   font-weight: 700;
-  color: var(--fontSecondary);
+  color: #0a0a0a;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -3269,7 +3264,7 @@ body {
   align-items: center;
   padding: 5px 16px;
   gap: 10px;
-  background-color: var(--bgColorPrimary);
+  background-color: #ffffff;
   /* optional background */
   border: 1px solid var(--fontPrimary);
   cursor: pointer;
@@ -3341,8 +3336,7 @@ body {
 /* Medium */
 @font-face {
   font-family: "FuturaBT-Book";
-  src: url(/template-2/assets/fonts/FuturaBT-Book.otf) format("opentype"),
-        url(/assets/fonts/FuturaBT-Book.otf) format("opentype");
+  src: url(/assets/fonts/FuturaBT-Book.otf) format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -3360,8 +3354,7 @@ body {
 
 @font-face {
   font-family: "HistoryPro-Two";
-  src: url(/template-2/assets/fonts/historypro-two.ttf) format("truetype"),
-        url(/assets/fonts/historypro-two.ttf) format("truetype");
+  src: url(/assets/fonts/historypro-two.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -3383,6 +3376,8 @@ h1,h2,h3 {
 p {
   font-weight: 400;
 } 
+
 .popupLogo {
   height: auto;
 }
+
