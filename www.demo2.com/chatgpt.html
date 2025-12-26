@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="max-w-5xl mx-auto px-4 py-8 font-[Inter]">
+  <!-- Heading for accessibility -->
+  <h2 class="text-2xl font-bold text-center mb-6">Pricing Details</h2>
+
+  <!-- Container -->
+  <div class="space-y-6">
+    <!-- Row Template -->
+    <div class="bg-white rounded-xl border border-yellow-700 p-4 shadow-sm sm:grid sm:grid-cols-4 sm:items-center sm:gap-4">
+      <!-- Typology -->
+      <div class="text-sm sm:text-base">
+        <span class="font-semibold block sm:hidden">Typology:</span>
+        1 BHK
+      </div>
+      <!-- Carpet Area -->
+      <div class="text-sm sm:text-base">
+        <span class="font-semibold block sm:hidden">Carpet Area:</span>
+        1035 Sq. Ft
+      </div>
+      <!-- Price -->
+      <div class="text-sm sm:text-base">
+        <span class="font-semibold block sm:hidden">Price:</span>
+        1.05 Cr All Onwards
+      </div>
+      <!-- Button -->
+      <div class="mt-3 sm:mt-0">
+        <button class="w-full sm:w-auto bg-gradient-to-r from-yellow-300 to-yellow-700 text-white font-medium px-4 py-2 rounded-md hover:scale-105 transition-transform">
+          Get Details
+        </button>
+      </div>
+    </div>
+
+    <!-- Repeat Rows -->
+    <div class="bg-white rounded-xl border border-yellow-700 p-4 shadow-sm sm:grid sm:grid-cols-4 sm:items-center sm:gap-4">
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Typology:</span> 2 BHK</div>
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Carpet Area:</span> 1035 Sq. Ft</div>
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Price:</span> 1.05 Cr</div>
+      <div class="mt-3 sm:mt-0">
+        <button class="w-full sm:w-auto bg-gradient-to-r from-yellow-300 to-yellow-700 text-white font-medium px-4 py-2 rounded-md hover:scale-105 transition-transform">
+          Get Details
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl border border-yellow-700 p-4 shadow-sm sm:grid sm:grid-cols-4 sm:items-center sm:gap-4">
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Typology:</span> 3 BHK</div>
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Carpet Area:</span> 1035 Sq. Ft</div>
+      <div class="text-sm sm:text-base"><span class="font-semibold block sm:hidden">Price:</span> 1.05 Cr</div>
+      <div class="mt-3 sm:mt-0">
+        <button class="w-full sm:w-auto bg-gradient-to-r from-yellow-300 to-yellow-700 text-white font-medium px-4 py-2 rounded-md hover:scale-105 transition-transform">
+          Get Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .video-thumbnail {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .video-thumbnail:hover {
+    transform: scale(1.02);
+  }
+
+  .video-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-button::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 16px solid white;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    margin-left: 4px;
+  }
+
+  .watch-now {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0284c7;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+</style>
+
+<div class="video-thumbnail" onclick="alert('Play video or open modal here')">
+  <img src="/g6.webp" alt="Video Thumbnail">
+  <div class="play-button"></div>
+  <div class="watch-now">Watch Video Now</div>
+</div>
+
+
+</body>
+</html>
