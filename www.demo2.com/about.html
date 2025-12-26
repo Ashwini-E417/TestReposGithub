@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assests/css/style.css">
+</head>
+<body>
+    <section class="md:px-4 m-4 shadow-[0_4px_20px_var(--color)] rounded py-2 scroll-mt-20" id="price">
+        
+        <div class="lg:flex gap-2">
+            <div class="lg:w-[60%] p-2 ">
+                <p class="text-3xl text-center font-bold text-[var(--color)] mb-4">About Godrej Properties</p>
+                <img src="assests/images/logo/logo.webp" alt="Enquire now about Godrej Properties" loading="lazy" width="150px" height="35px" class="mx-auto"> 
+                <p class="text-justify p-2">The Godrej Group has a diverse range of business ventures, including real estate development, fast-moving consumer products, cutting-edge engineering, furniture, security, and agri-care. Each Godrej Properties project blends a dedication to advanced design and technology with a 125-year tradition of excellence and trust. Godrej Properties brings the Godrej Group's innovation, sustainability, and excellence-focused principles to the real estate industry.</p>
+            </div>
+            <div class="lg:w-[40%] px-2 text-center">
+                <form class="border rounded p-4" id="form2">
+                    <legend><span class="text-xl font-bold text-[var(--color)]">Still Having Question?</span><br>
+                    <span class="text-yellow-700">Let us help you find your prefect House.</span>
+                    </legend>
+                    <br>
+                    <input type="text" name="name" class="w-full outline-1 border p-2 rounded border-[var(--color)] mb-2" autocomplete="name" placeholder="Your Name" required>
+                    <div class="flex gap-2 mb-2">
+                        <select required class="border border-[var(--color)] outline-1 w-[30%] p-2 rounded" name="countryCode" aria-label="Enter Country Code">
+                            <option value="+91">India (+91)</option>
+                        </select>
+                        <input type="number" required  name="mobile" placeholder="Mobile Number" class="w-[70%] border border-[var(--color)] p-2 rounded" autocomplete="mobile">
+                    </div>
+
+                    <input type="checkbox" required checked id="consentCheckbox" class="" aria-label="consentCheckbox">
+                    <label for="consentCheckbox" class="text-justify text-xs"> I consent to the use of provided data in accordance with <a href="#" class="text-blue-800">privacy policy</a></label>
+                    <button class="w-full bg-gradient-to-r from-amber-300 to-yellow-700 py-1 rounded mt-2">Enquire Now</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="text-white bg-neutral-900 text-sm p-4">
+        <div class="">
+            <img src="assests/images/qr/qr.webp" alt="Qr Godrej Skyshore" class="mx-auto" width="120px" height="120px">
+        </div>
+        <div class="my-4">
+        <p><span class="text-lg font-bold">&#10003; </span>Project Registered under Government of India RERA Act 2016 |
+        <a href=https://www.maharera.maharashtra.gov.in/ target=_blank class="underline"> www.maharera.maharashtra.gov.in </a>
+        </p>
+        <p><span class="text-lg font-bold">&#10003; </span>Government RERA Authorised Advertiser’s: Homesfy Realty Ltd , Registration No- A51900000136
+        </p>
+        <p><span class="text-lg font-bold">&#10003; </span>Project RERA: P51700046312</p>
+        </div>
+        <p class="text-justify"><strong>Disclaimer: </strong>We're an authorized marketing channel partner (Homesfy Realty Ltd). The provided content, images & video are sourced from respective owners and are provided only for information purposes, it does not constitute an offer to buy any service. The price plans are subject to change without prior notice, and the properties mentioned are subject to availability. You can receive a call, SMS, or emails on contact details registered with us.</p>
+
+        <p class="text-xs text-center mt-4 mb-8">&copy; Copyright | <a href=https://www.homesfy.co.in/terms.html class="text-blue-800 font-bold">Terms & Conditions</a> | <a href=https://www.homesfy.co.in/privacy.html class="text-blue-800 font-bold">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
