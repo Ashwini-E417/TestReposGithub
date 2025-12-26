@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind CSS Responsive Site</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold">MySite</div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#home" class="hover:text-blue-600">Home</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+      <button id="menu-btn" class="md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor"
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2 transition delay-300 ease-in-out hover:translate-x-1">
+      <a href="#home" class="block hover:text-blue-600">Home</a>
+      <a href="#about" class="block hover:text-blue-600">About</a>
+      <a href="#contact" class="block hover:text-blue-600">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="text-center py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to My Site</h1>
+    <p class="text-lg md:text-xl">Learn Tailwind CSS by building simple layouts</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-6xl mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center">About</h2>
+    <p class="text-lg text-gray-600 text-center">
+      This is a demo responsive website built with Tailwind CSS to help you understand utility-first design.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-white py-16 px-4">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">Contact Us</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Name"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md" />
+        <input type="email" placeholder="Email"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md" />
+        <textarea rows="4" placeholder="Message"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-md"></textarea>
+        <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-6">
+    &copy; 2025 MySite. All rights reserved.
+  </footer>
+
+  <!-- JavaScript for Mobile Menu -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>
