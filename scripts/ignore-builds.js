@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import fs from "fs";
 
 const root = process.env.VERCEL_PROJECT_ROOT;
 
@@ -35,4 +36,5 @@ if (!shouldBuild) {
 
 console.log(`Changes in ${root} → deploy`);
 process.exit(1);
+
 
