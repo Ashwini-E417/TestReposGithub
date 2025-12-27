@@ -3,17 +3,15 @@ import fs from "fs";
 
 const root = process.env.VERCEL_PROJECT_ROOT;
 
-if (!root) {
-  console.log("No project root → skip");
-  process.exit(0);
-}
 console.log("=== IGNORE BUILD SCRIPT START ===");
 console.log("PWD:", process.cwd());
 console.log("Root files:", fs.readdirSync("."));
 console.log("Scripts files:", fs.readdirSync("scripts"));
-console.log("=== IGNORE BUILD SCRIPT END ===");
 
-// process.exit(0); // ✅ IMPORTANT
+if (!root) {
+  console.log("No VERCEL_PROJECT_ROOT set → allow build");
+  process.exit(0);
+}
 
 let files = [];
 
@@ -23,19 +21,19 @@ try {
     .split("\n")
     .filter(Boolean);
 } catch {
-  console.log("First deploy → force build");
-  process.exit(1);
-}
-
-const shouldBuild = files.some(f => f.startsWith(root + "/"));
-
-if (!shouldBuild) {
-  console.log(`No changes in ${root} → skip`);
+  console.log("First deploy (no git history) → allow build");
   process.exit(0);
 }
 
-console.log(`Changes in ${root} → deploy`);
-process.exit(1);
+const shouldDeploy = files.some(f => f.startsWith(root + "/"));
 
+if (!shouldDeploy) {
+  console.log(`No changes in ${root} → skipping deploy`);
+  process.exit(0); // ✅ SUCCESS = skip silently
+}
 
+console.log(`Changes in ${root} → allow deploy`);
+console.log("=== IGNORE BUILD SCRIPT END ===");
 
+// 🔥 THIS IS THE MOST IMPORTANT LINE
+process.exit(0);
