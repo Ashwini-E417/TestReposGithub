@@ -6,6 +6,13 @@ if (!root) {
   console.log("No project root → skip");
   process.exit(0);
 }
+console.log("=== IGNORE BUILD SCRIPT START ===");
+console.log("PWD:", process.cwd());
+console.log("Files in cwd:", require("fs").readdirSync("."));
+console.log("Files in scripts:", require("fs").readdirSync("scripts"));
+console.log("=== IGNORE BUILD SCRIPT END ===");
+
+// process.exit(0); // ✅ IMPORTANT
 
 let files = [];
 
@@ -28,3 +35,4 @@ if (!shouldBuild) {
 
 console.log(`Changes in ${root} → deploy`);
 process.exit(1);
+
