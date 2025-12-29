@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+         * {margin: 0;padding: 0;box-sizing: border-box;}
+        input,a,button {all: unset;}
+        a,button {cursor: pointer;}
+        body {font-family: "Nunito",sans-serif;font-display: swap;font-weight: 400;}
+        .fas {width: 15px;height: 20px;-webkit-mask: var(--icon-url) no-repeat center/contain; mask: var(--icon-url) no-repeat center/contain;display: inline-block;color: #d97706;}
+        .fa {width: 15px;height: 20px;-webkit-mask: var(--icon-url) no-repeat center/contain; mask: var(--icon-url) no-repeat center/contain;display: inline-block;color: #d97706;}
+        .fa-check {--icon-url: url(assets/images/icons/check-outline-mask.svg);background: #22c55e;}
+        .fa-eye {--icon-url: url(assets/images/icons/eye-outline-mask.svg);background: #fff;}
+        .fa-location {--icon-url: url(assets/images/icons/map-marker-mask.svg);background: #000;}
+        .fa-carpet {--icon-url: url(assets/images/icons/grid-outline-mask.svg);background: #000;}
+        .fa-type {--icon-url: url(assets/images/icons/home-outline-mask.svg);background: #000;}
+
+        .property-cards-container {display: grid;grid-template-columns: repeat(3,1fr);padding: 1rem 5rem; gap: 50px;}
+        .property-card {width: 100%;box-shadow: 0 0 3px #1b6b4b;padding: 5px;border-radius: 10px;position: relative;}
+        .image-container {position: relative;}
+        .property-image {display: block;width: 100%; height: auto;border-radius: 10px 10px 0 0;}
+        .rera-badge {position: absolute;top: 10px;left: 10px;background: #fff;display: flex;align-items: center;gap: 5px;font-size: 1vw;}
+        .view-count {position: absolute;bottom: 10px;left: 5px;color: #fff;display: flex;gap: 5px;font-size: 1vw; align-items: center;justify-content: center;}
+        .content {padding: 10px;text-align: center;line-height: 1.5;}
+        .developer-info {display: flex;justify-content: center;align-items: center;gap: 5px;}
+        .developer-name {font-size: 1vw;}
+        .property-title {font-size: 1.75vw;font-weight: 600;color: #1b6b4b;}
+        .location {font-size: 1.25vw;display: flex;align-items: center;gap: 5px;justify-content: center;margin-bottom: 1vh;}
+        .detail-item {font-size: 1.2vw;display: flex;gap: 5px;justify-content: center;align-items: center;margin-bottom: 1vh;}
+        .price-range {font-size: 1.35vw;color: #d97706;font-weight: 700;}
+
+        .enquire-now-btn {width: 100%;padding: 10px;color: #fff;background: linear-gradient(90deg, #1b6b4b, #0ac776, #1b6b4b);border: 0;border-radius: 5px;font-family: outfit, sans-serif;font-size: 15px;font-weight: 600;cursor: pointer;display: block;box-sizing: border-box;margin-top: 10px;background-size: 300% 100%;animation: 3s ease-in-out infinite shine;}
+
+        .hideContainer .property-card:nth-child(n + 4) {display: none;}
+        .MoreCards {display: flex !important;align-items: center;height: 100%;grid-column: 2/3;padding: 25px;box-shadow: none;}
+        .viewMoreButton {margin: auto;display: flex;flex-direction: row;gap: 10px;align-items: center;text-align: center;}
+        .viewMoreButton:hover {text-decoration: underline;color: #1b6b4b;font-weight: 700;}
+        @keyframes shine {
+            0%, 100% {background-position: 0 50%;}
+            50% {background-position: 100% 50%;}
+        }
+
+        @media (max-width:800px) {
+            .property-cards-container {grid-template-columns: repeat(2, 1fr);gap: 10px;padding: 1rem;}
+            .property-card{padding: 0;}
+            .content {padding: 5px;}
+            .developer-name {font-size: 1.2vh;}
+            .property-title {font-size: 1.75vh;}
+            .location {font-size: 1.25vh;margin-bottom: 0.5vh;}
+            .detail-item {font-size: 1.2vh;margin-bottom: .5vh;}
+            .price-range {font-size: 1.35vh;}
+            .rera-badge {font-size: 10px;padding: 0px 5px;top: 5px;left: 5px;}
+            .view-count {font-size: 10px;bottom: 5px;left: 5px;}
+            .fa {width: 10px;height: 15px;}
+            .enquire-now-btn {font-size: 1.5vh;padding: 8px;}
+
+            .MoreCards {padding: 5px;grid-column: auto;}
+            .viewMoreButton {flex-direction: column;}
+        }
+    </style>
+</head>
+<body>
+    <div class="property-cards-container hideContainer">
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card MoreCards">
+                <button class="viewMoreButton">
+                    <span>View More Properties</span>
+                    <img src="assets/images/icons/arrow-right-round.svg" alt="More" width="30" height="30" loading="lazy">
+                </button>
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let viewMoreButton = document.querySelector('.viewMoreButton');
+                let propertyCardsContainer = document.querySelector('.property-cards-container');
+                viewMoreButton.addEventListener('click', () => {
+                    propertyCardsContainer.classList.toggle('hideContainer');
+                    viewMoreButton.querySelector('span').innerHTML = propertyCardsContainer.classList.contains('hideContainer') ? 'View More Properties' : 'View Less Properties';
+                });
+            });
+            
+        </script>
+</body>
+</html>
