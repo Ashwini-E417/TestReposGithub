@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .virtual {
+            padding: 2rem 5rem 1rem;
+        }
+        .virtual-video-container {
+            position: relative;
+        }
+        .video-content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            text-wrap: nowrap;
+            z-index: 1;
+        }
+        .video-content {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: gold;
+            margin: 0;
+            text-wrap: auto;
+        }
+        .video-overlay {
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: calc(100% - 4px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+        .videoLogo {
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .Video-heading {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-wrap: nowrap;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+           .youtube-playicon {
+    background-color: red;
+    width: 90px;
+    height: 50px;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 1px 1px 3px #000;
+    z-index: 5;
+}
+.youtube-playicon:hover {
+    transform: translate(-50%,-50%) scale(1.1);
+}
+.youtube-playicon::after {
+    width: 0px;
+    height: 0px;
+    z-index: 2000;
+    border-left: 20px solid #fff;
+    border-radius: 4px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.virtual-footer {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 1%;
+    color: #fff;
+    padding: 1rem;
+    z-index: 5;
+}
+.virtual-subheading {
+    color: #fff;
+    background-color: red;
+    position: absolute;
+    top: 65%;
+    left: 0%;
+    transform: translate(0%,-65%);
+    padding: 0.5rem;
+    z-index: 3;
+}
+.video-content-greeting {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+        @media (max-width:768px) {
+            .virtual {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="virtual" id="virtual">
+        <div class="virtualsite-container">
+            <h3 class="sectionHeading">Virtual Site Tour</h3>
+            <div class="virtual-video-container">
+                <img src="assests/images/banner/b1.webp" alt="Video of Lodha" width="100%" height="300px" loading="lazy">
+                <p class="virtual-subheading">Sample Flat Video</p>
+                <div class="video-content-container">
+                    <p class="video-content-greeting">Welcome to</p>
+                    <p class="video-content">Candeur Skyline Hyderabad</p>
+                </div>
+                <div class="video-overlay"></div>
+                <div class="youtube-playicon"></div>
+                
+                <p class="Video-heading"><img src="assests/images/logo/logo.webp" alt="logo" class="videoLogo">Candeur Skyline</p>
+                <p class="virtual-footer">Watch on <i class="ri-youtube-fill"></i>Youtube</p>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

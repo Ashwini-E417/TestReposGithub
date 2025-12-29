@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+    </style>
+    <style>
+        .popup-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0,0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+        }
+
+        .sideEnquireBtn {
+  position: fixed;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--colorprimary);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+  border: 2px solid var(--colorprimary);
+  border-bottom: 0;
+}
+.popupform-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid var(--colorprimary);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    display: none;
+}
+#popupform-heading {
+    color: var(--colorprimary);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1rem 0
+}
+.popupform-inputcontainer {
+    /* border: 1px solid; */
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+}
+.popupform-label {
+    display: none;
+    margin-bottom: 0.3rem;
+}
+.popupform-name {
+    width: 100%;
+    border: 0;
+    padding: 0.8rem 0.5rem;
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 0px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #555;
+}
+.popupform-Submitbtn {
+    background: var(--colorprimary);
+    color: #fff;
+    border: 0px;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.popupform-mobileconatiner {
+    display: flex;
+    gap: 2%;
+}
+.popupform-countrycode {
+    flex: 0 0 28%;
+    border: 0;
+    padding: 0.8rem 0.5rem;
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 0px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #555;
+}
+.popupform-mobile {
+    border: 0;
+    padding: 0.8rem 0.5rem;
+    background-color: #f0f0f0;
+    color: black;
+    border-radius: 0px;
+    flex: 0 0 70%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #555;
+}
+.popupform-close {
+    color: var(--colorprimary);
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    pointer-events: all;
+    font-weight: 700;
+}
+.popupform-checkboxlabel {
+    font-size: 0.6rem;
+}
+    </style>
+</head>
+<body>
+    hghggkgkgkghghggvgjh
+    <div>
+  <button class="sideEnquireBtn popup-trigger" data-heading="Limited Time Offer!">Enquire Now</button>
+  <div class="popup-overlay"></div>
+    <div class="popupform-container">
+        <button class="popupform-close">&times;</button>
+        <p id="popupform-heading">Limited Time Offer!</p>
+      <form>
+        <div class="popupform-inputcontainer">
+            <label for="name" class="popupform-label">Enter Name:</label>
+            <input type="text" id="name" placeholder="Enter Your Name" class="popupform-name" autocomplete="name" required>
+        </div>
+        <div class="popupform-inputcontainer">
+            <label for="mobile" style="display: none;" >Enter Mobile Number:</label>
+            <label for="countrycode" class="popupform-label">Enter Mobile Number:</label>
+            <div class="popupform-mobileconatiner">
+                
+                <select id="countrycode" class="popupform-countrycode" required>
+                    <option value="+91" selected>+91</option>
+                </select>
+                <input type="text" id="mobile" placeholder="Enter Mobile Number" class="popupform-mobile" autocomplete="mobile" required>
+            </div>
+        </div>
+        <div class="popupform-inputcontainer" style="display: flex;gap: 2%; align-items: flex-start;">
+            <input type="checkbox" class="popupform-checkbox" id="popupform-checkbox" checked required>
+            <label for="popupform-checkbox" class="popupform-checkboxlabel">I consent to the use of provided data in accordance with the <a href=https://www.homesfy.co.in/privacy.html target=_blank style="color: blue;">privacy policy</a></label>
+        </div>
+        <div class="popupform-inputcontainer" style="text-align: center;">
+            <input type="submit" value="Submit" class="popupform-Submitbtn">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector(".popupform-close").addEventListener("click",()=>{
+            closepopupform();
+    })
+    document.querySelectorAll(".popup-trigger").forEach((element)=>{
+        element.addEventListener("click",()=>{
+            document.querySelector("#popupform-heading").innerHTML = element.getAttribute("data-heading");
+            openpopupform();
+        })
+    })
+    function closepopupform() {
+            document.querySelector(".popupform-container").style.display = 'none';
+            document.querySelector(".popup-overlay").style.display="none";
+    }
+    function openpopupform(){
+        document.querySelector(".popupform-container").style.display = 'block';
+            document.querySelector(".popup-overlay").style.display="block";
+    }
+    window.addEventListener("load",()=>{
+        setTimeout(() => {
+            openpopupform();
+        }, 4000);
+    })
+  </script>
+</body>
+</html>

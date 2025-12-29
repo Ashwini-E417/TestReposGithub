@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+    </style>
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        
+        .priceRow {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10%;
+        }
+
+        .priceCard {
+            /* background: #f0f0f0; */
+            color: #000;
+            text-align: center;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            flex: 0 0 20%;
+            border: 1px solid var(--colorprimary);
+            box-shadow: 0 0 0px var(--colorprimary);
+            position: relative;
+            overflow: hidden;
+        }
+        .price-divider::before {
+            color: var(--colorprimary);
+            content: "";
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--colorprimary);
+            background-color: var(--colorprimary);
+            position: absolute;
+            top: -30px;
+            right:-30px;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        .price-divider::after {
+            color: var(--colorprimary);
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 1px solid var(--colorprimary);
+            background-color: var(--colorprimary);
+            position: absolute;
+            bottom: 50px;
+            left:50px;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        .priceSize {
+            font-size: 1rem;
+            padding: 0.5rem 0rem;
+        }
+        .priceAmount {
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 0.5rem 0 0.8rem;
+        }
+        .priceBtn {
+            color: white;
+            background-color: var(--colorprimary);
+            border: 0px;
+            padding: 0.8rem 0.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .price-divider {
+            width: 50%;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid var(--colorprimary);
+        }
+        @media (max-width:768px) {
+            .priceRow {
+                justify-content: space-around;
+                gap:0%;
+            }
+             
+            .priceCard {
+                flex: 0 0 40%;
+                padding: 1rem 0.5rem;
+            }
+            .priceAmount {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+            .priceBtn {
+                padding: 0.6rem 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+    </style>
+    <style>
+        .animatecard {
+            width: 50%;
+            height: 150%;
+            background-color: var(--colorprimary);
+            animation: rotate 3s ease infinite;
+            position: absolute;
+            overflow: hidden;
+            transform: translate(-50%,-50%);
+            top: -30%;
+            left: 30%;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(35deg);
+            }
+            50% {
+                transform: rotate(215deg);
+            }
+            100% {
+                transform: rotate(395deg);
+            }
+        }
+        .priceCard-item {
+            position: relative;
+            overflow: hidden;
+            padding: 2px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .priceCard {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <section id="price" class="overview">
+        
+        <div class="overviewHighlightContainer">
+            <div class="overviewContainer">
+                <h3 class="sectionHeading">Price Plan</h3>
+                <div class="priceSectionWrapper">
+                    <div class="priceRow" role="region" aria-label="Available apartment pricing options">
+                    <!-- Repeating priceCard blocks -->
+                    <div class="priceCard-item">
+                        <div class="animatecard"></div>
+                    <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+                        <p class="priceSize">1 BHK</p>
+                        <hr class="price-divider">
+                        <p class="priceSize">446 Sq. Ft.</p>
+                        <p class="priceAmount">₹ 73.5 Lacs*</p>
+                        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">
+                            <i class="ri-article-fill"></i>
+                            Get Price Sheet</button>
+                    </div>
+                    </div>
+
+                    <div class="priceCard-item">
+                        <div class="animatecard"></div>
+                    <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+                        <p class="priceSize">1 BHK</p>
+                        <hr class="price-divider">
+                        <p class="priceSize">446 Sq. Ft.</p>
+                        <p class="priceAmount">₹ 73.5 Lacs*</p>
+                        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">
+                            <i class="ri-article-fill"></i>
+                            Get Price Sheet</button>
+                    </div>
+                    </div>
+
+                    <div class="priceCard-item">
+                        <div class="animatecard"></div>
+                    <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+                        <p class="priceSize">1 BHK</p>
+                        <hr class="price-divider">
+                        <p class="priceSize">446 Sq. Ft.</p>
+                        <p class="priceAmount">₹ 73.5 Lacs*</p>
+                        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">
+                            <i class="ri-article-fill"></i>
+                            Get Price Sheet</button>
+                    </div>
+                    </div>
+
+                    <div class="priceCard-item">
+                        <div class="animatecard"></div>
+                    <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+                        <p class="priceSize">1 BHK</p>
+                        <hr class="price-divider">
+                        <p class="priceSize">446 Sq. Ft.</p>
+                        <p class="priceAmount">₹ 73.5 Lacs*</p>
+                        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">
+                            <i class="ri-article-fill"></i>
+                            Get Price Sheet</button>
+                    </div>
+                    </div>
+
+                    <div class="priceCard-item">
+                        <div class="animatecard"></div>
+                    <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+                        <p class="priceSize">1 BHK</p>
+                        <hr class="price-divider">
+                        <p class="priceSize">446 Sq. Ft.</p>
+                        <p class="priceAmount">₹ 73.5 Lacs*</p>
+                        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">
+                            <i class="ri-article-fill"></i>
+                            Get Price Sheet</button>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+</body>
+</html>

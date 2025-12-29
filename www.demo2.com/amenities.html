@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #amenities {
+            scroll-margin-top: 80px;
+         }
+        .amenities {
+            padding: 1rem 5rem 1rem;
+            background-color: rgb(240, 240, 240);
+        }
+        .amenitiesCaurosel {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .amenitiesSlide {
+            width: 100%;
+            display: flex;
+            gap: 5%;
+            flex-wrap: nowrap;
+            transition: transform 0.3s ease-in-out;
+        }
+        .amenitiesCard {
+            flex: 0 0 30%;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+        .amenitiesCard img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 10px;
+        }
+        .amenities-description {
+            color: var(--colorprimary);
+            background-color: rgb(255, 255, 255, 0.9);
+            z-index: 1000;
+            position: absolute;
+            bottom: 0rem;
+            padding: 0.5rem 0rem;
+            border-radius: 0px 0px 10px 10px;
+            font-weight: 600;
+            text-wrap: nowrap;
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            margin: 0;
+        }
+        .amenitiesCard:hover .amenities-description {
+            padding: 1rem;
+            transform: translate(-50%,-50%);
+            border-radius: 0px;
+        }
+        
+        .amenitiesindicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 6rem;
+        }
+        .amenities-overlay {
+            position: fixed;
+            top: 3rem;
+            padding: 5rem 0;
+            background-color: rgba(0, 0, 0,0.7);
+            width: 100%;
+            height: 100%;
+            display: none;
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+        .amenities-popupWrapper {
+            display: block;
+            /* align-items: center;
+            justify-content: space-between; */
+            padding: 0rem;
+            position: relative;
+        }
+        .amenities-popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .amenities-popup-close {
+            padding: 1rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+        }
+        .amenities_nextBtn {
+            position: absolute;
+            right: 0px;
+        }
+        
+        .amenities-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 5rem;
+            background-color: rgba(0, 0, 0,0.7);
+        }
+
+        .amenities-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* display: flex;
+            justify-content: space-between; */
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .amenities-popupimage {
+            width: 700px;
+            height: 400px;
+        }
+
+        .amenitiesDownloadBtn {
+            padding: 0.8rem 2rem;
+            text-align: center;
+            background-color: var(--colorprimary);
+            color: white;
+            border: 0px;
+            border-radius: 0 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .arrowBtn {
+            padding: 1rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+            background-color: var(--colorprimary);
+            border-radius: 50%;
+        }
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0px;
+            /* pointer-events: none; */
+        }
+        @media (max-width:768px) {
+            .amenities {
+            padding: 1rem 0rem;
+            }
+
+            .amenities-popupWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0rem;
+            }
+            .amenities-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            }
+
+            .amenities-popup-close {
+            padding: 0.8rem;
+            /* border-radius: 50%; */
+            border: 0px;
+            /* border: 1px solid white; */
+            /* background-color: rgba(255,255,255,0.3); */
+            color: white;
+            }
+
+            .amenities-popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .amenitiesCard {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 1rem;
+            overflow: hidden;
+            }
+
+        .amenities-popupimage {
+            width: 300px;
+            height: 300px;
+        }
+        .amenities-description {
+            color: var(--colorprimary);
+            background-color: rgb(255, 255, 255, 0.9);
+            z-index: 1000;
+            position: absolute;
+            bottom: 0rem;
+            padding: 0.5rem 1rem;
+            border-radius: 10px 10px 0px 0px;
+            font-weight: 600;
+            text-wrap: nowrap;
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            margin: 0 0 1rem;
+        }
+
+        .amenitiesCard:hover .amenities-description {
+            border-radius: 10px;
+            padding: 1rem 2rem;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    
+<section class="amenities fade-section" id="amenities" aria-labelledby="amenities-heading">
+  <p class="sectionHeading" id="amenities-heading">Amara <strong>Amenities</strong></p>
+
+  <div class="amenitiesCaurosel" role="region" aria-label="Amenity image carousel">
+    <div class="amenitiesSlide">
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/gym.webp" alt="Well-equipped gymnasium" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Gymnasium</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/indoorgames.webp" alt="Indoor games area" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Indoor Games</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/kids.webp" alt="Kids play area" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Kids Play Area</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/swimming.webp" alt="Swimming pool" width="100%" height="auto" loading="lazy">
+        <div>
+        <p class="amenities-description">Infinity Pool</p>
+        </div>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/temple.webp" alt="Temple within the premises" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Temple</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/theatre.webp" alt="Private mini-theatre" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Theatre</p>
+      </div>
+    </div>
+
+    <div class="amenities-arrows">
+      <button class="arrowBtn amenities_prevBtn" type="button" aria-label="Previous amenity image">‹</button>
+      <button class="arrowBtn amenities_nextBtn" type="button" aria-label="Next amenity image">›</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1rem 0;">
+    <button class="amenitiesDownloadBtn btn-animated popup-trigger" data-heading="Download Amenities!" type="button" aria-label="Download full list of amenities">Download Amenities</button>
+  </div>
+</section>
+
+<div class="amenities-overlay" id="amenities-overlay" role="dialog" aria-modal="true" aria-labelledby="amenities-modal-heading" style="display: none;">
+  <div class="amenities-popup">
+    <button class="amenities-popup-close" type="button" aria-label="Close amenities popup">&times;</button>
+
+    <div class="amenities-popupWrapper">
+      <h2 id="amenities-modal-heading" class="visually-hidden" style="display: none;">Amenity Image Preview</h2>
+
+      <div class="amenities-popup-imageholder">
+        <img src="" alt="Selected amenity preview" class="amenities-popupimage" id="amenities-popupimage" loading="lazy">
+      </div>
+
+      <div class="carousel-arrows">
+        <button class="arrowBtn prev" id="amenities_prevBtn" type="button" aria-label="Previous image">‹</button>
+        <button class="arrowBtn next" id="amenities_nextBtn" type="button" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- <script>
+        let amenitiesIndex ;
+        let amenitiesImg = document.querySelectorAll(".amenitiesCard img");
+        let amenitiesCard = document.querySelectorAll(".amenitiesCard");
+        let amenitiesSlide = document.querySelector(".amenitiesSlide");
+        let amenitiesTrans = 0;
+        let amenitiesCount = amenitiesImg.length-1;
+        let account = 0;
+        let amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+        let amenitiespopupopen = false
+
+        function amenitiescauroselbegin() {
+            
+            if (window.innerWidth<'769') {
+                amenitiesTrans += 105;
+                if (account==amenitiesCount+1) {
+                account=0;
+                amenitiesTrans=0;
+            }
+            }
+            else {
+                amenitiesTrans += 35;
+                if (account>=amenitiesCount-1) {
+                    account=0;
+                    amenitiesTrans=0;
+                }
+            }
+            amenitiesSlide.style.transform = `translateX(-${amenitiesTrans}%)`;
+            account=account+1;
+        }
+
+        // window.addEventListener("resize",()=>{
+        //     account=1;
+        //     clearInterval(amenitiesCaurosel);
+            
+        //     amenitiesCaurosel = setInterval(cauroselbegin,3000);
+        // })
+
+        amenitiesImg.forEach((element)=>{
+            element.addEventListener("mouseenter",function () {
+                clearInterval(amenitiesCaurosel);
+            })
+        })
+
+        amenitiesImg.forEach((element)=>{
+            element.addEventListener("mouseout",function () {
+                if (!amenitiespopupopen) {
+                amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+                }
+            })
+        })
+
+        let amenitiespopupimage = document.getElementById("amenities-popupimage");
+        let aoverlay = document.getElementById("amenities-overlay");
+        amenitiesImg.forEach((element,index) => {
+            element.addEventListener("click",(e)=>{
+                e.preventDefault();
+                aoverlay.style.display = "block";
+                amenitiespopupimage.src = element.src;
+                clearInterval(amenitiesCaurosel);
+                amenitiespopupopen = true;
+                amenitiesIndex = index;
+                body.classList.add("noscroll");
+            })
+        })
+
+        document.querySelector(".amenities-popup-close").addEventListener("click",()=>{
+            aoverlay.style.display = "none";
+            amenitiespopupimage.src = "";
+            amenitiespopupopen = false;
+            amenitiesCaurosel = setInterval(amenitiescauroselbegin,3000);
+            body.classList.remove("noscroll");
+        })
+
+        document.querySelector("#amenities_prevBtn").addEventListener("click",()=>{
+            if (amenitiesIndex==0) {
+                amenitiesIndex=amenitiesCount;
+            }
+            else {amenitiesIndex--;}
+            amenitiespopupimage.src = amenitiesImg[amenitiesIndex].src;
+        })
+
+        document.querySelector("#amenities_nextBtn").addEventListener("click",()=>{
+            if (amenitiesIndex==amenitiesCount) {
+                amenitiesIndex=0;
+            }
+            else {amenitiesIndex++;}
+            amenitiespopupimage.src = amenitiesImg[amenitiesIndex].src;
+        })
+        
+        document.querySelector(".amenities_prevBtn").addEventListener("click",()=>{
+            account=account-1;
+            if (window.innerWidth<'768') {
+                amenitiesTrans -= 105;
+                if (account<0) {
+                account=amenitiesCount;
+                amenitiesTrans=amenitiesCount*105;
+            }
+            }
+            else {
+                amenitiesTrans -= 35;
+                if (account<0) {
+                    account=amenitiesCount-2;
+                    amenitiesTrans=account*35;
+                }
+            }
+            amenitiesSlide.style.transform = `translateX(-${amenitiesTrans}%)`;
+            clearInterval(amenitiesCaurosel);
+            amenitiesCaurosel = setInterval(amenitiescauroselbegin,3000);
+            
+        })
+    
+        document.querySelector(".amenities_nextBtn").addEventListener("click",()=>{
+            account=account+1;
+            if (window.innerWidth<'768') {
+                amenitiesTrans += 105;
+                if (account>amenitiesCount) {
+                account=0;
+                amenitiesTrans=0;
+            }
+            }
+            else {
+                amenitiesTrans += 35;
+                if (account>=amenitiesCount-1) {
+                    account=0;
+                    amenitiesTrans=0;
+                }
+            }
+            amenitiesSlide.style.transform = `translateX(-${amenitiesTrans}%)`;
+            clearInterval(amenitiesCaurosel);
+            
+            amenitiesCaurosel = setInterval(amenitiescauroselbegin,3000);
+        })
+    </script> -->
+    <script>
+    let amenitiesImg = document.querySelectorAll(".amenitiesCard img");
+    let amenitiesSlide = document.querySelector(".amenitiesSlide");
+    let amenitiesCount = amenitiesImg.length - 1;
+    let account = 0;
+    let amenitiesIndex = 0;
+    let amenitiespopupopen = false;
+    let amenitiesTrans = 0;
+    let amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+
+    function getStep() {
+        return window.innerWidth < 768 ? 105 : 35;
+    }
+
+    function maxSlide() {
+        return window.innerWidth < 768 ? amenitiesCount + 1 : amenitiesCount - 1;
+    }
+
+    function updateSlide() {
+        amenitiesSlide.style.transform = `translateX(-${account * getStep()}%)`;
+    }
+
+    function amenitiescauroselbegin() {
+        updateSlide();
+        account = (account + 1) % maxSlide();
+    }
+
+    amenitiesImg.forEach((el, idx) => {
+        el.addEventListener("mouseenter", () => clearInterval(amenitiesCaurosel));
+        el.addEventListener("mouseout", () => {
+            if (!amenitiespopupopen) {
+                amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+            }
+        });
+        el.addEventListener("click", () => {
+            document.getElementById("amenities-overlay").style.display = "block";
+            document.getElementById("amenities-popupimage").src = el.src;
+            amenitiespopupopen = true;
+            amenitiesIndex = idx;
+            clearInterval(amenitiesCaurosel);
+            body.classList.add("noscroll");
+        });
+    });
+
+    document.querySelector(".amenities-popup-close").addEventListener("click", () => {
+        document.getElementById("amenities-overlay").style.display = "none";
+        document.getElementById("amenities-popupimage").src = "";
+        amenitiespopupopen = false;
+        amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+        body.classList.remove("noscroll");
+    });
+
+    document.getElementById("amenities_prevBtn").addEventListener("click", () => {
+        amenitiesIndex = (amenitiesIndex - 1 + amenitiesImg.length) % amenitiesImg.length;
+        document.getElementById("amenities-popupimage").src = amenitiesImg[amenitiesIndex].src;
+    });
+
+    document.getElementById("amenities_nextBtn").addEventListener("click", () => {
+        amenitiesIndex = (amenitiesIndex + 1) % amenitiesImg.length;
+        document.getElementById("amenities-popupimage").src = amenitiesImg[amenitiesIndex].src;
+    });
+
+    document.querySelector(".amenities_prevBtn").addEventListener("click", () => {
+        account = (account - 1 + maxSlide()) % maxSlide();
+        updateSlide();
+        resetCarousel();
+    });
+
+    document.querySelector(".amenities_nextBtn").addEventListener("click", () => {
+        account = (account + 1) % maxSlide();
+        updateSlide();
+        resetCarousel();
+    });
+
+    function resetCarousel() {
+        clearInterval(amenitiesCaurosel);
+        amenitiesCaurosel = setInterval(amenitiescauroselbegin, 3000);
+    }
+    window.addEventListener("resize",()=>{
+        updateSlide();
+    })
+</script>
+
+</body>
+</html>

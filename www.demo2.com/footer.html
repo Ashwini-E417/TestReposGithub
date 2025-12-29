@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+    </style>
+    <style>
+    .footer-container {
+            background-color: #f0f0f0;
+            color: #000;
+            padding: 2rem 5rem;
+            text-align: justify;
+            line-height: 1.5rem;
+            letter-spacing: normal;
+         }
+         .footer-qr-section {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+         }
+         .footer-qr-image {
+            width: 100px;
+            height: 100px;
+         }
+         .footer-rera-number {
+            margin: 0px;
+            font-size: 0.9rem;
+         }
+         .footer-rera-info {
+            font-size: 0.9rem;
+            line-height: 1.5rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
+         }
+         .footer-rera-item {
+            display: flex;
+            gap: 0.5rem;
+         }
+         .footer-disclaimer-text {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+         }
+         .footer-links-container {
+            font-size: 0.9rem;
+            text-align: center;
+         }
+         .footer-link,.footer-rera-link {
+            color: blue;
+         }
+         .footer-rera-checkmark {
+          color: var(--colorprimary);
+          font-weight: 600;
+         }
+         @media (max-width:768px) {
+            .footer-container {
+                padding: 2rem 1rem 5rem;
+            }
+         }
+    </style>
+    <style>
+      .footer-Subheading {
+        color: var(--colorprimary);
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+      .footer-list {
+        list-style-type: none;
+        padding: 0;
+      }
+      .footer-list li {
+        padding: 0.3rem 0;
+      }
+      .footer-list li a {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .footer-list a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+      .footer-contactHeading {
+        color: var(--colorprimary);
+      }
+      .footer-icon {
+        color: var(--colorprimary);
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+      .footer-contactQuickLinksContainer {
+        display: flex;
+        gap: 5%;
+      }
+      .footer-quicklinkContainer {
+        flex: 0 0 50%;
+        margin-bottom: 1rem
+      }
+      .footer-flexlink {
+        display: flex;
+      }
+      .footer-flexlink .footer-list{
+        flex: 0 0 40%;
+      }
+      @media (max-width:500px) {
+        .footer-contactQuickLinksContainer {
+          display: block;
+        }
+        .footer-flexlink .footer-list{
+          flex: 0 0 50%;
+        }
+      }
+    </style>
+</head>
+<body>
+    <footer class="footer-container" role="contentinfo" aria-label="Footer">
+  <div class="footer-qr-section">
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+  </div>
+
+  <div class="footer-rera-info">
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Project registered under Government of India RERA Act 2016 |
+        <a href="http://www.maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="footer-rera-link">
+          www.maharera.maharashtra.gov.in
+        </a>
+      </span>
+    </div>
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Government RERA Authorised Advertiser: Homesfy Realty Ltd, Registration No - A51900000136
+      </span>
+    </div>
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Project RERA: P51700046312
+      </span>
+    </div>
+  </div>
+
+  <hr style="border: 1px solid var(--colorprimary);">
+  <br>
+  <div class="footer-contactQuickLinksContainer">
+    <div class="footer-quicklinkContainer">
+      <p class="footer-Subheading">Quick Links</p>
+      <div class="footer-flexlink">
+        <ul class="footer-list">
+          <li><a href="">Home</a></li>
+          <li><a href="">OverView</a></li>
+          <li><a href="">Configurations</a></li>
+          <li><a href="">Price</a></li>
+        </ul>
+        <ul class="footer-list">
+          <li><a href="">Amenities</a></li>
+          <li><a href="">Gallery</a></li>
+          <li><a href="">Location</a></li>
+          <li><a href="">Download Brochure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-contactContainer">
+      <p class="footer-Subheading">Get in touch</p>
+      <ul class="footer-list">
+        <li><span class="footer-contactHeading">Phone</span><br><a href=""><i class="ri-phone-fill footer-icon"></i>+91 9876543210</a></li>
+        <li><span class="footer-contactHeading">Email</span><br>
+            <a href="">
+              <i class="ri-mail-line footer-icon"></i>
+              abc@123</a>
+        </li>
+        <li>
+          <a href=""><i class="ri-whatsapp-line footer-icon"></i></a>
+          <a href=""><i class="ri-instagram-line footer-icon"></i></a>
+          <a href=""><i class="ri-facebook-line footer-icon"></i></a>
+          <a href=""><i class="ri-linkedin-line footer-icon"></i></a>
+          <a href=""><i class="ri-twitter-x-line footer-icon"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div>
+    <p class="footer-disclaimer-text">
+      <strong>Disclaimer: </strong> We're an authorized marketing channel partner. The provided content, images & videos are sourced from respective owners and are provided for informational purposes only. They do not constitute an offer to buy. Prices are subject to change without prior notice. Property availability is subject to confirmation. By submitting your contact details, you agree to receive calls, SMS, or emails from us.
+    </p>
+  </div>
+
+  <hr style="border: 1px solid var(--colorprimary);">
+
+  <br>
+  <div class="footer-links-container">
+    &copy; Copyright
+    <span class="footer-separator">|</span>
+    <a href="https://www.homesfy.co.in/privacy.html" target="_blank" rel="noopener noreferrer" class="footer-link">Privacy Policy</a>
+    <span class="footer-separator">|</span>
+    <a href="https://www.homesfy.co.in/terms.html" target="_blank" rel="noopener noreferrer" class="footer-link">Terms & Conditions</a>
+  </div>
+
+  
+</footer>
+
+</body>
+</html>

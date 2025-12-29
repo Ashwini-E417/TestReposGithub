@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+header {
+    box-shadow: 1px 2px 2px white;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 2000;
+    height: 3rem;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 3rem;
+}
+.navbar1 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.phone_url {
+    border: 1px solid white;
+    border-radius: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.phone_url p {
+    padding: 0px 10px;
+}
+
+.hamburger {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
+}
+.navbar1 a {
+  color: white;
+  text-decoration: none;
+}
+.fa-call {
+    --icon-url: url('/assests/images/icons/callDark.svg');
+    margin-left: 0.5rem;
+  }
+  .fa-hamburger {
+    --icon-url:url('/assests/images/icons/hamburger.svg');
+  }
+  .fa-icon {
+    --webkit-mask : var(--icon-url);
+    mask: var(--icon-url);
+    width: 20px;
+    height: 20px;
+    background-color: white;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width:300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -1px 1px 2px gray;
+    padding: 2rem;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+
+.openSidebar {
+    transform: translateX(0%);
+}
+
+.sidebar-close {
+    position:fixed;
+    top:1.5rem;
+    right: 2rem;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.nav-item-list {
+  padding: 0;
+}
+
+.nav-item-list li{
+  list-style-type: none;
+}
+.nav-item-list li a {
+  color: black;
+  text-decoration: 0;
+  padding: 1rem 0.5rem;
+  width: 95%;
+  display: block;
+  border-bottom: 1px solid gray;
+}
+.nav-item-list li a:hover{
+  background: var(--colorprimary);
+  color: #fff;
+}
+.nav-item-list li:last-of-type a {
+  border: 0;
+}
+
+@media (max-width:1000px) {
+  .hamburger {
+    display: block;
+  }
+  .navbar1 {
+    display: none;
+  }
+  nav {
+    padding: 0.17rem 1rem;
+    background-color: rgb(0,0,0,0.6);
+    box-shadow: none;
+    border: 0;
+  }
+  .phone_url,.whatsapp_url{
+        display: none;
+    }
+}
+    </style>
+    <style>
+
+      .bannerOverlay {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(0,0,0,0.4);
+        position: absolute;
+        top: 0;
+      }
+      .bannerImage {
+            width: 100%;
+            height: 100vh;
+        }
+        .banner {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+        }
+        .bannerImage {
+            width: 100%;
+        }
+        .bannerTrack {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bannerCard {
+            width: 100%;
+            flex: 0 0 100%;
+            position: relative;
+        }
+        @media (max-width: 1000px) {
+            .bannerImage {
+                height: 17rem;
+            }
+            .bannerCard {
+              top: 3rem;
+              height: 20rem;
+            }
+            .bannerOverlay {
+              height: 20rem;
+            }
+        }
+    </style>
+    <style>
+      .bannerheadingContainer {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-10%,-50%);
+        /* text-align: center; */
+        animation: fadein 1s ease-in-out;
+      }
+      @keyframes fadein {
+        0%{
+          transform: translate(-10%,100%);
+        }
+        50%{
+          transform: translate(-10%,-100%);
+        }
+        
+      }
+      .bannerheading {
+        color: var(--colorprimary);
+        font-size: 4rem;
+        text-shadow: 1px 1px 2px black;
+        font-weight: 800;
+      }
+      .bannerdeveloper {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 1px black;
+        margin: 0.5rem 0;
+      }
+      .bannerlocation {
+        color: white;
+        background-color: rgb(255,255,255,0.5);
+        width: fit-content;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        text-align: center;
+        /* margin: 0 auto; */
+        font-weight: 700;
+      }
+      
+      .bannerSubHeading{
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-shadow: 1px 1px 1px black;
+      }
+      .bannersubheadingprice {
+        font-size: 2rem;
+      }
+      .bannerEnquireBtn {
+        padding: 1rem 2rem;
+        background-color: white;
+        border: 0px;
+        border-radius: 30px;
+        color: black;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .bannerOfferConatiner {
+        background-color: rgb(0,0,0,0.5);
+        margin: 1rem 0;
+        padding: 1rem;
+        color: #fff;
+        border-radius: 30px;
+        font-weight: 600;
+      }
+      .offerlist {
+        padding: 0;
+      }
+      .offerlist li {
+        list-style-type: none;
+        padding: 0.3rem;
+        display: flex;
+        gap: 3%;
+      }
+      .offerlist li p {
+        text-align: left;
+      }
+      .bannerofferHeading {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 1px black;
+      }
+      @media (max-width:1000px) {
+        .bannerheadingContainer {
+          position: relative;
+          transform: none;
+          top:0rem;
+          left: 0;
+          padding: 1rem;
+          text-align: center;
+          /* animation: none; */
+        }
+        @keyframes fadein {
+        0%{
+          transform: translate(0%,100%);
+        }
+        50%{
+          transform: translate(0%,-25%);
+        }
+        }
+        .bannerOfferConatiner {
+          padding: 1rem;
+          width: fit-content;
+          margin: 1rem auto;
+        }
+        .bannerofferHeading {
+          text-shadow: none;
+        }
+        .bannerdeveloper,.bannerSubHeading {
+          color: #000;
+          text-shadow: none;
+        }
+        .bannerlocation {
+          background-color: rgb(0,0,0,0.5);
+          margin: 0 auto;
+        }
+        .bannerEnquireBtn {
+          background-color: var(--colorprimary);
+          color: white;
+        }
+        
+      }
+      @media (max-width:550px) {
+        .bannerheadingContainer {
+          top: 0rem;
+        }
+        .bannerheading {
+          font-size: 3rem;
+          font-weight: 700;
+        }
+        .bannerSubHeading {
+          font-size: 1rem;
+        }
+        
+      }
+    </style>
+</head>
+<body>
+  
+    <!-- header -->
+<header>
+  <nav aria-label="Primary navigation">
+    <span>
+      <img src="assests/images/logo/logo.svg" alt="Logo of Amara" width="150px" height="40px" class="logo" fetchpriority="high"/>
+    </span>
+    <span class="navbar1">
+        <a href="#price" title="View Price Plan" class="nav-item">Price Plan</a>
+        <a href="#amenities" title="Explore Amenities" class="nav-item">Amenities</a>
+        <a href="#floorplan" title="View Floor Plans" class="nav-item">Floor Plan</a>
+        <a href="#gallery" title="Browse Gallery" class="nav-item">Gallery</a>
+        <a href="#location" title="Check Project Location" class="nav-item">Location</a>
+        <a href="#virtualsite" title="Take Virtual Site Tour" class="nav-item">Virtual Site Tour</a>
+        <a href="" class="popup-trigger downloadBrochure" data-heading="Download Brochure!" title="Download Project Brochure PDF">Download Brochure</a>
+    </span>
+
+
+    <span class="navbar">
+      <a href="tel:9762984343" class="phone_url" title="Call Sales Support">
+        <i class="fa-call fa-icon"></i>
+        <p>9762984343</p>
+      </a>
+
+      <a href="https://wa.me/919762984343" class="whatsapp_url" title="Chat with us on WhatsApp">
+        <img src="assests/images/icons/whatsapp.svg" width="40" height="40" alt="" aria-hidden="true" />
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <i class="ri-menu-line" style="display: block;width: 20px;height: 20px;font-size: 1.5rem;color: white;background: transparent;"></i>
+      </button>
+    </span>
+  </nav>
+
+  <div class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">×</button>
+
+    <img src="assests/images/logo/logo.svg" alt="Logo of Amara" width="150px" height="50px" class="logo" loading="lazy" />
+    <br><br>
+
+    <div aria-label="Sidebar navigation">
+      <ul class="nav-item-list">
+        <li><a href="#price" title="View Price Plan" class="nav-item">Price Plan</a></li>
+        <li><a href="#amenities" title="Explore Amenities" class="nav-item">Amenities</a></li>
+        <li><a href="#floorplan" title="View Floor Plans" class="nav-item">Floor Plan</a></li>
+        <li><a href="#gallery" title="Browse Gallery" class="nav-item">Gallery</a></li>
+        <li><a href="#location" title="Check Project Location" class="nav-item">Location</a></li>
+        <li><a href="#virtualsite" title="Take Virtual Site Tour" class="nav-item">Virtual Site Tour</a></li>
+        <li><a href="" class="popup-trigger downloadBrochure" data-heading="Download Brochure!" title="Download Project Brochure PDF">Download Brochure</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section>
+    <div class="bannerTrack">
+      <div class="banner">
+        <div class="bannerCard">
+          <img src="assests/images/banner/banner.webp" 
+        srcset="/assests/images/banner/banner-480.webp 480w, /assests/images/banner/banner.webp 1280w"
+        sizes="(max-width: 600px) 480px, 1280px" alt="Modern Office Building" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async" class="bannerImage"/>
+        </div>
+        <div class="bannerCard">
+          <img src="/assests/images/banner/banner.webp" srcset="/assests/images/banner/banner-480.webp 480w, /assests/images/banner/banner.webp 1280w" sizes="(max-width: 600px) 480px, 1280px" alt="Modern Office Building" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async" class="bannerImage"/>
+        </div>
+      </div>
+    </div>
+    <div class="bannerOverlay"></div>
+    <div class="bannerheadingContainer">
+      <h1 class="bannerheading">Heading</h1>
+      <p class="bannerdeveloper">
+        <!-- <i class="ri-building-2-line"></i> -->
+        Sub heading
+      </p>
+      <p class="bannerlocation">
+        <i class="ri-map-pin-line"></i>
+        Subheading
+      </p>
+      <p class="bannerSubHeading">Luxiourus 2, 3 BHK Starting at <span class="bannersubheadingprice">₹ 2</span> Cr Onwards</p>
+      <div class="bannerOfferConatiner">
+        <p class="bannerofferHeading">Launch Offers Available</p>
+        <ul class="offerlist">
+          <li>
+            <i class="ri-gift-2-line"></i>
+            <p>Vaastu Compliant offices</p>
+          </li>
+          <li>
+            <i class="ri-gift-2-line"></i>
+            <p>Only Commerical in the locality</p>
+          </li>
+          <li>
+            <i class="ri-gift-2-line"></i>
+            <p>Located just off eastern express highway</p>
+          </li>
+          <li>
+            <i class="ri-gift-2-line"></i>
+            <p>Offer 1</p>
+          </li>
+        </ul>
+      </div>
+      <button class="bannerEnquireBtn">Enquire Now</button>
+    </div>
+    
+</section>
+
+
+    <script>
+      let menubtn = document.getElementById("hamburger");
+let sidebar = document.getElementById("sidebar");
+
+menubtn.addEventListener("click",()=>{
+    sidebar.classList.add("openSidebar");  
+})
+
+let menucloseBtn = document.getElementById("sidebar-close");
+menucloseBtn.addEventListener("click",()=>{
+    sidebar.classList.remove("openSidebar");
+})
+
+let navitem = document.querySelectorAll(".nav-item");
+navitem.forEach((element)=>{
+    element.addEventListener("click",(e)=>{
+        e.preventDefault();
+        let target = document.getElementById(element.getAttribute('href').substring(1));
+        target.scrollIntoView({
+            behavior:'smooth',
+        })
+        sidebar.classList.remove("openSidebar");
+    })
+})
+
+document.querySelector(".downloadBrochure").addEventListener("click",()=>{
+    sidebar.classList.remove("openSidebar");
+})
+    </script>
+
+<script>
+  setInterval(updateBannerCorousel,3000);
+
+let bannerImage = document.querySelectorAll(".bannerImage");
+let bannerContainer = document.querySelector(".banner");
+let bannertransform = 0;
+let bannercount = 0;
+function updateBannerCorousel() {
+    bannerContainer.style.transform =  `translateX(-${bannercount*100}%)`;
+    bannercount+=1;
+    if (bannercount>bannerImage.length-1){
+        bannercount=0;
+    }
+}
+</script>
+</body>
+</html>

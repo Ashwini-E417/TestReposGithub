@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gallery {
+            scroll-margin-top: 80px;
+         }
+        .gallery {
+            padding: 2rem 5rem 1rem;
+            background-color: #fff;
+        }
+        .galleryCaurosel {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .gallerySlide {
+            width: 100%;
+            display: flex;
+            gap: 5%;
+            flex-wrap: nowrap;
+            transition: transform 1s ease-in-out;
+        }
+        .galleryCard {
+            flex: 0 0 30%;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: transform 1s ease-in-out;
+            position: relative;
+        }
+        .galleryCard img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 10px;
+        }
+        
+        .galleryindicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 6rem;
+        }
+        .gallery-overlay {
+            position: fixed;
+            top: 3rem;
+            padding: 5rem 0;
+            background-color: rgba(0, 0, 0,0.7);
+            width: 100%;
+            height: 100%;
+            display: none;
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+        .gallery-popupWrapper {
+            display: block;
+            /* align-items: center;
+            justify-content: space-between; */
+            padding: 0rem;
+            position: relative;
+        }
+        .gallery-popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .gallery-popup-close {
+            padding: 1rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+        }
+        .gallery_nextBtn {
+            position: absolute;
+            right: 0px;
+        }
+        
+        .gallery-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 5rem;
+            background-color: rgba(0, 0, 0,0.7);
+        }
+
+        .gallery-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* display: flex;
+            justify-content: space-between; */
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .gallery-popupimage {
+            width: 700px;
+            height: 400px;
+        }
+
+        .galleryDownloadBtn {
+            padding: 0.8rem 2rem;
+            text-align: center;
+            background-color: var(--colorprimary);
+            color: white;
+            border: 0px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .arrowBtn {
+            padding: 0 1rem 0.3rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+            background-color: var(--colorprimary);
+            font-weight: 600;
+            cursor: pointer;
+            /* border-radius: 50%; */
+        }
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0px;
+            /* pointer-events: none; */
+        }
+        .carouselarrowBtn {
+           padding: 0 1rem 0.3rem;
+            border: 0px;
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+            background-color: rgba(0, 0, 0,0.7);
+            font-weight: 600;
+            box-shadow: 0 0 4px;
+            cursor: pointer;
+        }
+        @media (max-width:768px) {
+            .gallery {
+            padding: 1rem 0rem;
+            }
+
+            .gallery-popupWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0rem;
+            }
+            .gallery-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            }
+
+            .gallery-popup-close {
+            padding: 0.8rem;
+            /* border-radius: 50%; */
+            border: 0px;
+            /* border: 1px solid white; */
+            /* background-color: rgba(255,255,255,0.3); */
+            color: white;
+            }
+
+            .gallery-popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .galleryCard {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 1rem;
+            overflow: hidden;
+            }
+
+        .gallery-popupimage {
+            width: 90%;
+            height: 300px;
+        }
+        
+
+        }
+
+    </style>
+</head>
+<body>
+    <section class="gallery fade-section" id="gallery" aria-labelledby="gallery-heading">
+  <h3 class="sectionHeading">Gallery</h3>
+
+  <div class="galleryCaurosel" role="region" aria-label="Amenity image carousel">
+    <div class="gallerySlide">
+      <div class="galleryCard">
+        <img src="assests/images/amenities/indoorgames.webp" alt="Well-equipped gymnasium" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Indoor games area" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/amenities/kids.webp" alt="Kids play area" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Swimming pool" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Temple within the premises" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/amenities/gym.webp" alt="Private mini-theatre" width="100%" height="auto" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-arrows">
+      <button class="arrowBtn gallery_prevBtn" type="button" aria-label="Previous amenity image">‹</button>
+      <button class="arrowBtn gallery_nextBtn" type="button" aria-label="Next amenity image">›</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1rem 0;">
+    <button class="galleryDownloadBtn btn-animated popup-trigger" data-heading="Download gallery!" type="button" aria-label="Download full list of gallery">Download gallery</button>
+  </div>
+</section>
+
+<div class="gallery-overlay" id="gallery-overlay" role="dialog" aria-modal="true" aria-labelledby="gallery-modal-heading" style="display: none;">
+  <div class="gallery-popup">
+    <button class="gallery-popup-close" type="button" aria-label="Close gallery popup">&times;</button>
+
+    <div class="gallery-popupWrapper">
+
+      <div class="gallery-popup-imageholder">
+        <img src="" alt="Selected amenity preview" class="gallery-popupimage" id="gallery-popupimage" loading="lazy">
+      </div>
+
+      <div class="carousel-arrows">
+        <button class="carouselarrowBtn prev" id="gallery_prevBtn" type="button" aria-label="Previous image">‹</button>
+        <button class="carouselarrowBtn next" id="gallery_nextBtn" type="button" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    let galleryImg = document.querySelectorAll(".galleryCard img");
+    let gallerySlide = document.querySelector(".gallerySlide");
+    let galleryCount = galleryImg.length - 1;
+    let gccount = 0;
+    let galleryIndex = 0;
+    let gallerypopupopen = false;
+    let galleryTrans = 0;
+    let galleryCaurosel = setInterval(gallerycauroselbegin, 5000);
+
+    function getgallerystep() {
+        return window.innerWidth < 768 ? 105 : 35;
+    }
+
+    function maxGallertSlide() {
+        return window.innerWidth < 768 ? galleryCount + 1 : galleryCount - 1;
+    }
+
+    function updategallerySlide() {
+        gallerySlide.style.transform = `translateX(-${gccount * getgallerystep()}%)`;
+    }
+
+    function gallerycauroselbegin() {
+        updategallerySlide();
+        gccount = (gccount + 1) % maxGallertSlide();
+    }
+
+    galleryImg.forEach((el, idx) => {
+        el.addEventListener("mouseenter", () => clearInterval(galleryCaurosel));
+        el.addEventListener("mouseout", () => {
+            if (!gallerypopupopen) {
+                galleryCaurosel = setInterval(gallerycauroselbegin, 5000);
+            }
+        });
+        el.addEventListener("click", () => {
+            document.getElementById("gallery-overlay").style.display = "block";
+            document.getElementById("gallery-popupimage").src = el.src;
+            gallerypopupopen = true;
+            galleryIndex = idx;
+            clearInterval(galleryCaurosel);
+            body.classList.add("noscroll");
+        });
+    });
+
+    document.querySelector(".gallery-popup-close").addEventListener("click", () => {
+        document.getElementById("gallery-overlay").style.display = "none";
+        document.getElementById("gallery-popupimage").src = "";
+        gallerypopupopen = false;
+        galleryCaurosel = setInterval(gallerycauroselbegin, 5000);
+        body.classList.remove("noscroll");
+    });
+
+    document.getElementById("gallery_prevBtn").addEventListener("click", () => {
+        galleryIndex = (galleryIndex - 1 + galleryImg.length) % galleryImg.length;
+        document.getElementById("gallery-popupimage").src = galleryImg[galleryIndex].src;
+    });
+
+    document.getElementById("gallery_nextBtn").addEventListener("click", () => {
+        galleryIndex = (galleryIndex + 1) % galleryImg.length;
+        document.getElementById("gallery-popupimage").src = galleryImg[galleryIndex].src;
+    });
+
+    document.querySelector(".gallery_prevBtn").addEventListener("click", () => {
+        gccount = (gccount - 1 + maxGallertSlide()) % maxGallertSlide();
+        updategallerySlide();
+        resetGalleryCarousel();
+    });
+
+    document.querySelector(".gallery_nextBtn").addEventListener("click", () => {
+        gccount = (gccount + 1) % maxGallertSlide();
+        updategallerySlide();
+        resetGalleryCarousel();
+    });
+
+    function resetGalleryCarousel() {
+        clearInterval(galleryCaurosel);
+        galleryCaurosel = setInterval(gallerycauroselbegin, 3000);
+    }
+    window.addEventListener("resize",()=>{
+        updategallerySlide();
+    })
+
+</script>
+</body>
+</html>

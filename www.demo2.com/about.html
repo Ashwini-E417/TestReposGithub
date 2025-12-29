@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+    </style>
+    <style>
+        .about {
+            padding: 1rem 5rem;
+            background-color: #fff;
+            line-height: 1.5rem;
+        }
+        
+        .aboutlogo {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .aboutpara {
+            text-align: justify;
+        }
+        .aboutEnquireBtn {
+            color: white;
+            background-color: var(--colorprimary);
+            padding: 0.8rem 2rem;
+            border: 0px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+         @media (max-width:768px) {
+            .about {
+                padding: 2rem 1rem 1rem;
+            }
+         }
+
+    </style>
+</head>
+<body>
+     <section class="about fade-section" id="about" aria-labelledby="about-heading">
+  <div>
+    <div class="aboutlogo">
+      <img
+        src="assests/images/logo/logo2.svg"
+        alt="Official logo of Lodha Amara"
+        width="200"
+        height="50"
+        class="aboutlogoimage"
+        loading="lazy"
+      />
+    </div>
+
+    <h3 class="sectionHeading">About Lodha Group</h3>
+    <div class="aboutpara">
+    <p class="clampText">
+      Lodha Group is one of India's most reputed and trusted real estate developers. Since 1980, the company has established itself as a reliable builder in the Indian real estate market. The developer is committed to quality, innovation, and professionalism. Lodha Group has earned many awards and accolades over the years. India Realty Awards has recognized them four times as "Builder of the Year." In 2016, the Economic Times awarded the group the "Most Trusted Real Estate Brand" award, recognizing the group as one of the country's most trusted real estate developers. Lodha Group is known for creating luxurious, high-end commercial and residential spaces. Lodha Bellissimo, Lodha The Park, and Lodha Fiorenza are some of their most prestigious projects in Mumbai. Additionally, they have developed projects in Pune, Hyderabad, and Bengaluru.
+    </p>
+    <a href="#" class="readMoreBtn" title="Read full project overview">Read More ▶</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1.5rem 0;">
+    <button class="aboutEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" type="button" aria-label="Enquire about Lodha projects">Enquire Now</button>
+  </div>
+</section>
+
+</body>
+</html>

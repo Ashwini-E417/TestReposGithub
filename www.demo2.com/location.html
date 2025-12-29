@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        --colorprimary:gold;
+        }
+        body{
+          background-color: lavenderblush;
+        }
+        .overviewContainer {
+            padding: 2rem 5rem;
+            color: black;
+            letter-spacing: 0.3px;
+            line-height: 2rem;
+            background-color: white;
+        }
+        @media (max-width:768px) {
+            .overviewContainer {
+                padding: 1rem;
+                text-align: justify;
+            }
+          }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+      #location {
+            scroll-margin-top: 80px;
+            background-color: rgb(255, 255, 255, 0.6);
+        }
+        .locationWrapper {
+            display: flex;
+            gap: 2%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .map-frame {
+            flex: 0 0 45%;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            height: fit-content;
+            box-sizing: border-box;
+        }
+        .map-frame iframe {
+          border-radius: 10px;
+        }
+        .accordion-wrapper {
+            flex: 0 0 50%;
+        }
+               .accordion-content {
+          overflow: hidden;
+          visibility: hidden;
+          max-height: 0;
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: transform 0.4s ease, max-height 0.6s ease, opacity 0.4s ease, max-height 0.4s ease;
+          margin: 0;
+          padding: 0;
+        line-height: 2rem;
+      list-style-position: outside;}
+
+
+.accordion-content.contentactive {
+  visibility: visible;
+  max-height: 1000px; /* Big enough to fit content */
+  opacity: 1;
+  transform: translateY(0);
+  padding: 0.8rem;
+  border: 1px solid var(--colorprimary);
+  border-radius: 0 0 10px 10px;
+}
+
+        .accordion-content ul li span {
+            color: var(--colorprimary);
+            background-color: transparent;
+        }
+
+        .locationEnquire {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .locationEnquireBtn {
+            padding: 0.8rem 2rem;
+            text-align: center;
+            background-color: var(--colorprimary);
+            color: white;
+            border: 0px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .mobile-accordionBtn {
+                display: block;
+                width: 100%;
+                padding: 0.8rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: white;
+                background-color: var(--colorprimary);
+                border: 0px;
+                border-radius: 10px ;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+            .accordion-arrow {
+                font-size: 1.5rem;
+                font-weight: 600;
+                transition: transform 0.3s ease;
+                transform: rotate(-90deg);
+            }
+            .accordion-wrapper {
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .accordion-active {
+                color: white;
+                background-color: var(--colorprimary);
+                border: 1px solid var(--colorprimary);
+                border-radius: 10px 10px 0 0;
+            }
+            .accordion-arrow.accordion-arrow-active {
+                transform: rotate(0deg);
+            }
+            .accordion-contentWrapper {
+                margin-bottom: 0.2rem;
+            }
+            .accordion-content ul {
+                margin: 0rem;
+            }
+
+        @media (max-width:1024px) {
+            
+            .locationWrapper {
+                display: block;
+                padding: 0 1rem 1rem;
+            }
+            .map-frame {
+                width: 100%;
+            }
+
+            .map-frame iframe{
+                height: 300px;
+            }
+        }
+
+    </style>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <section id="location" class="overviewContainer fade-section" aria-labelledby="location-heading">
+
+  <div class="locationWrapper">
+    <!-- Google Map -->
+    <div class="map-frame" role="region" aria-label="Google Map showing Lodha Amara location">
+  <h3 class="sectionHeading">Location</h3>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869.492024637345!2d72.9892725!3d19.2332529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bbbcd4f20c15%3A0x4c36bff2609ee7cf!2sLodha%20Amara%20Thane!5e1!3m2!1sen!2sin!4v1751889832611!5m2!1sen!2sin"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        title="Lodha Amara Location Map"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Accordion Info -->
+    <div class="accordion-wrapper">
+
+      <!-- Mobile Accordion Content -->
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn accordion-active" type="button" aria-expanded="true" aria-controls="connectivity-content">
+          <span>Connectivity</span>
+          <i class="ri-arrow-drop-down-line accordion-arrow accordion-arrow-active"></i>
+        </button>
+        <div class="accordion-content contentactive" id="connectivity-content">
+          <ul>
+            <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="healthcare-content">
+          <span>Healthcare</span>
+          <i class="ri-arrow-drop-down-line accordion-arrow"></i>
+        </button>
+        <div class="accordion-content" id="healthcare-content">
+          <ul>
+           <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="education-content">
+          <span>Education</span>
+          <i class="ri-arrow-drop-down-line accordion-arrow"></i>
+        </button>
+        <div class="accordion-content" id="education-content">
+          <ul>
+           <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="entertainment-content">
+          <span>Entertainment Hubs</span>
+          <i class="ri-arrow-drop-down-line accordion-arrow"></i>
+        </button>
+        <div class="accordion-content" id="entertainment-content">
+          <ul>
+           <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="retail-content">
+          <span>Retail</span>
+          <i class="ri-arrow-drop-down-line accordion-arrow"></i>
+        </button>
+        <div class="accordion-content" id="retail-content">
+          <ul>
+           <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="locationEnquire">
+        <button class="locationEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" type="button" aria-label="Enquire about location connectivity and access">Enquire Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+        let accordionContent = document.querySelectorAll(".accordion-content");
+        let accordionBtn = document.querySelectorAll(".mobile-accordionBtn");
+        let spanArrow = document.querySelectorAll(".accordion-arrow");
+
+        accordionBtn.forEach((element,index)=>{
+            element.addEventListener("click",()=>{toogleAccordion(index)});
+        })
+
+        function toogleAccordion(index) {
+            if (accordionBtn[index].classList.contains("accordion-active")) {
+                accordionBtn[index].classList.remove("accordion-active");
+            accordionContent[index].classList.remove("contentactive");
+            
+            spanArrow[index].classList.remove("accordion-arrow-active");
+            return;
+            }
+            for (let i=0;i<accordionBtn.length;i++) {
+                accordionBtn[i].classList.remove("accordion-active");
+                accordionContent[i].classList.remove("contentactive");
+                
+                spanArrow[i].classList.remove("accordion-arrow-active");
+            }
+            if (!accordionBtn[index].classList.contains("accordion-active")) {
+            accordionBtn[index].classList.add("accordion-active");
+            accordionContent[index].classList.add("contentactive");
+            spanArrow[index].classList.add("accordion-arrow-active");
+            }
+        }
+
+</script>
+</body>
+</html>

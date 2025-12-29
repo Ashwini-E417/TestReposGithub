@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --colorprimary: #40E0D0;
+        }
+
+        .bannersticky {
+            position: fixed;
+            top: 0px;
+            z-index: -1;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        .bannersticky img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+        .overview {
+            position: relative;
+        }
+
+        /* .overviewHighlightContainer {
+            position: absolute;
+            top: 0px;
+        } */
+
+        .overviewContainer {
+            padding: 2rem 5rem;
+            color: black;
+            letter-spacing: 0.3px;
+            line-height: 2rem;
+            background-color: white;
+        }
+        .sectionHeading {
+            font-size: 2rem;
+            color: var(--colorprimary);
+            text-align: center;
+            margin-bottom: 2%;
+        }
+        .clampText {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+        }
+        .readMoreBtn {
+            text-decoration: none;
+            color: var(--colorprimary);
+            font-weight: bold;
+        }
+    
+        .highlightContainer {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .blankhighlight {
+            flex: 0 0 50%;
+        }
+        .highlightpoints {
+            background-color: rgba(255,255,255,0.9);
+            padding: 2rem 5rem 2rem 1rem;
+        }
+        .highlightlist {
+            
+            list-style-type: none;
+        }
+        .highlightlist li {
+            padding: 0.7rem 0;
+        }
+        @media (max-width:600px) {
+            .blankhighlight {
+                display: none;
+            }
+        }
+        @media (max-width:768px) {
+            .overviewContainer {
+                padding: 1rem;
+                text-align: justify;
+            }
+            .highlightpoints {
+                padding: 1rem;
+            }
+            .highlightlist {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bannersticky">
+            <img src="assests/images/banner/banner.webp" alt="highlight banner" >
+        </div>
+    
+    <section id="overview" class="overview">
+        
+        <div class="overviewHighlightContainer">
+            <div class="overviewContainer">
+                <h3 class="sectionHeading">OverView</h3>
+                <p class="overviewPara clampText">Rustomjee presents a community that reimagines urban living by focusing on sophistication, sustainability, and unity. The project features exquisitely designed homes with private decks, surrounded by lush greenery, providing a serene sanctuary amidst the bustle of the city. Thoughtfully designed spaces cater to the needs of all family members, with dedicated areas for children and senior citizens. Its prime location ensures convenience and easy access to major landmarks and essential services. Rustomjee Urban Woods combines innovative design with eco-conscious elements, offering a modern yet mindful lifestyle. This community fosters a strong sense of belonging while elevating everyday living to new heights.</p>
+                <a href="#" class="readMoreBtn" title="Read full project overview">Read More</a>
+            </div>
+            <div class="projecthighlightcontainer">
+                <div class="highlightContainer">
+                    <div class="blankhighlight"></div>
+                    <div class="highlightpoints">
+                        <h3 class="sectionHeading">Project Highlight</h3>
+                        <ul class="highlightlist">
+                            <li>Exclusive Doctors' Enclave units available</li>
+                            <li>Prime location in Matunga, near Eastern Express Highway</li>
+                            <li>Excellent connectivity to various parts of the city</li>
+                            <li>High-value appreciation & rental yield as the only premium commercial development in the area</li>
+                            <li>High-value appreciation & rental yield as the only premium commercial development in the area</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section>
+        <h2>
+            hello and Bye
+        </h2>
+    </section>
+
+
+    <script>
+        let readMore = document.querySelectorAll(".readMoreBtn");
+        let clampText = document.querySelectorAll(".clampText");
+        readMore.forEach((element,index) => {
+            element.addEventListener("click",(e)=>{
+                e.preventDefault();
+                if (clampText[index].style.display=="block") {
+                    clampText[index].style.display = "-webkit-box";
+                    clampText[index].style.webkitLineClamp = "4";
+                    element.innerHTML = "Read More";
+                    clampText[index].scrollIntoView({
+                        behavior:'smooth',
+                    })
+                }
+                else {
+                    clampText[index].style.display = "block";
+                    clampText[index].style.webkitLineClamp = "unset";
+                    element.innerHTML = "Read Less";
+                }
+        })
+    })
+    </script>
+</body>
+</html>
