@@ -1,9 +1,694 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Trial Vercel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="description" content="Welcome to Lodha Amara">
+    <link rel="stylesheet" href="assests/css/style.css" />
+    <link rel="preload" as="image" href="/assests/images/banner/banner.webp">
+    <link rel="preload" as="image" href="assests/images/logo/logo.svg" />
 </head>
-<body>
-<h1>Vercel project built demo</h1>
+<body class="body">
+    <!-- header -->
+     <header>
+  <nav aria-label="Primary navigation">
+    <span>
+      <img src="assests/images/logo/logo.svg" alt="Logo of Amara" width="150px" height="40px" class="logo" fetchpriority="high"/>
+    </span>
+    <span class="navbar">
+      <a href="tel:+918976997450" class="phone_url" title="Call Sales Support">
+        <img src="assests/images/icons/phone.svg" width="40" height="40" alt="" aria-hidden="true" />
+        <p>+918976997450 </p>
+      </a>
+
+      <a href="https://api.whatsapp.com/send?phone=+918976997450&text=I want to know more about the property" class="whatsapp_url" title="Chat with us on WhatsApp">
+        <img src="assests/images/icons/whatsapp.svg" width="40" height="40" alt="" aria-hidden="true" />
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <img src="assests/images/icons/hamburger.svg" alt="" width="25" height="25" aria-hidden="true" />
+      </button>
+    </span>
+  </nav>
+
+  <div class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">×</button>
+
+    <img src="assests/images/logo/logo.svg" alt="Logo of Amara" width="150px" height="50px" class="logo" loading="lazy" />
+    <br><br>
+
+    <div aria-label="Sidebar navigation">
+      <ul class="nav-item-list">
+        <li><a href="#overview" title="Overview of Amara" class="nav-item">Overview</a></li>
+        <li><a href="#price" title="View Price Plan" class="nav-item">Price Plan</a></li>
+        <li><a href="#amenities" title="Explore Amenities" class="nav-item">Amenities</a></li>
+        <li><a href="#floorplan" title="View Floor Plans" class="nav-item">Floor Plan</a></li>
+        <li><a href="#gallery" title="Browse Gallery" class="nav-item">Gallery</a></li>
+        <li><a href="#location" title="Check Project Location" class="nav-item">Location</a></li>
+        <li><a href="#virtualsite" title="Take Virtual Site Tour" class="nav-item">Virtual Site Tour</a></li>
+        <li><a href="" class="popup-trigger downloadBrochure" data-heading="Download Brochure!" title="Download Project Brochure PDF">Download Brochure</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Banner -->
+<section>
+  <div class="desktopbanner">
+    <div class="bannerTrack">
+      <div class="banner">
+        <div class="bannerCard">
+          <img src="/assests/images/banner/banner.webp" 
+        srcset="/assests/images/banner/banner-480.webp 480w, /assests/images/banner/banner.webp 1280w"
+        sizes="(max-width: 600px) 480px, 1280px" alt="Modern Office Building" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async" class="bannerImage"/>
+        </div>
+        <div class="bannerCard">
+          <img src="/assests/images/banner/banner.webp" srcset="/assests/images/banner/banner-480.webp 480w, /assests/images/banner/banner.webp 1280w" sizes="(max-width: 600px) 480px, 1280px" alt="Modern Office Building" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async" class="bannerImage"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="bannerDetails">
+      <div class="bannercontainer-heading">
+        <p>New Launch Exclusive Offer</p>
+      </div>
+      <div>
+        <p class="bannerHeading">Amara
+          <span class="bannerLocation">By Lodha Groups</span> 
+          <span class="bannerLocation">at Kolshet Road Thane</span>
+        </p>
+      </div>
+      <!-- <p class="bannersubHeading">1/2/3 BHK Flats with Deck</p> -->
+
+      <div class="banneroffer-container">
+        <p class="bannerMove">Partially Ready To Move</p>
+        <ul class="bannerOffer">
+          <li>Fixed Rate of 6.99% Till 2024*</li>
+          <li>Save up to ₹2.08 Lakhs for first 50 bookings</li>
+          <li>Under-construction | RTMI Apartments</li>
+        </ul>
+      </div>
+
+      <p class="bannerPriceHeading">1/2/3 BHK Flats With Deck Starts At</p>
+      <p class="bannerPrice">₹73.5 Lacs*</p>
+      <!-- <p class="bannerPriceHeading">● RERA Registered</p> -->
+
+      <button class="bannerEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" aria-label="Open Enquiry Form">Enquire Now</button>
+    </div>
+  </div>
+
+  <form class="bannerForm" aria-label="Site Visit Enquiry Form" id=ModalFormSlug4 data-tracking-id=form_3_mobileForm onsubmit=event.preventDefault(),validateAndSubmitForm4(this)>
+<input type=hidden id=gclid_field name=gclid_field>
+    <div class="formContent">
+      <p class="formHeading">Want to Know More?</p>
+      <p>Discover Your Perfect Home with Us!</p>
+    </div>
+
+    <div class="bannerform-container">
+
+    <div class="input-wrapper">
+      <label for="bannerform-name" class="visually-hidden">Your Name</label>
+      <input type="text"  id="bannerform-name" class="form-name bannerform-name" placeholder="Enter your Name" required aria-required="true" />
+    </div>
+
+    <div class="input-wrapper" style="display: flex; align-items: center;">
+      <label for="country-code" class="visually-hidden">Country Code</label>
+      <select name="country-code" id="country-code" class="country-code form-country" aria-label="Country Code" required>
+        <option value="+91">+91</option>
+      </select>
+
+      <label for="bannerform-number" class="visually-hidden">Mobile Number</label>
+      <input type="tel" id="bannerform-number" class="form-number bannerform-number" placeholder="Mobile Number" required aria-required="true"  />
+    </div>
+
+    <div class=bannerform-mobilecheck>
+      <input type=checkbox class=bannerFormCheckboxMobile id=consent_checkbox2 checked required>
+      <label for=consent_checkbox2 class=bannerFormConsentTextMobile>
+                  I consent to the use of provided data in accordance with the
+      <a href=https://www.homesfy.co.in/privacy.html class=firstFormPrivacyLink style="color: #5C61FF;">privacy policy</a>
+                  </label>
+    </div>
+
+
+    <div class="submitbuttonWrapper">
+      <button class="bannerSubmitBtn btn-animated" type="submit" aria-label="Submit site visit request">Book Site Visit</button>
+    </div>
+  </div>
+    <div class=bannerform-check >
+      <input type=checkbox class=bannerFormCheckbox id=consent_checkbox checked required>
+      <label for=consent_checkbox class=bannerFormConsentText>
+                  I consent to the use of provided data in accordance with the
+      <a href=https://www.homesfy.co.in/privacy.html class=firstFormPrivacyLink>privacy policy</a>
+                  </label>
+    </div>
+  </form>
+</section>
+
+<!-- Overview -->
+ <section class="section overview fade-section" id="overview">
+  <!-- Overview block -->
+  <div>
+    <p class="sectionHeading">Amara <strong>Overview</strong></p>
+    <div class="overviewPara">
+      <p class="clampText">
+        Residences are designed to provide everything you need, from living to exploring to basking in nature. Located at Kolshet Road West, Thane's most prestigious neighbourhood, these homes offer unprecedented green space and recreational facilities. Numerous outdoor spaces are designed to provide you with a wealth of outdoor experiences and world-class air quality, as well as the sports arena, private forest, and alfresco cafés. Residences are designed to provide everything you need, from living to exploring to basking in nature. Located at Kolshet Road West, Thane's most prestigious neighbourhood, these homes offer unprecedented green space and recreational facilities. Numerous outdoor spaces are designed to provide you with a wealth of outdoor experiences and world-class air quality, as well as the sports arena, private forest, and alfresco cafés.
+      </p>
+      <a href="#" class="readMoreBtn" title="Read full project overview">Read More</a>
+    </div>
+  </div>
+</section>
+
+  <!-- Highlight block -->
+<section class="highlight section fade-section">
+  <div>
+    <p class="sectionHeading">Amara <strong>Highlights</strong></p>
+    <div class="highlightsection" role="region" aria-label="Project highlights">
+      <div class="highlightImage">
+        <div class="highlight-Imagewrapper">
+          <img src="assests/images/icons/high1.webp" alt="Amara Highlights - Sports and Nature Living" loading="lazy" width="100%" height="300" class="highlightImg1" />
+        </div>
+      </div>
+
+      <div class="highlightpoints">
+        <ul>
+          <li><span aria-hidden="true">✓</span> Prime Central Thane Location</li>
+          <li><span aria-hidden="true">✓</span> Grand Sports Arena</li>
+          <li><span aria-hidden="true">✓</span> FIFA-sized football ground</li>
+          <li><span aria-hidden="true">✓</span> 2 Acres private forest</li>
+          <li><span aria-hidden="true">✓</span> 40 acres of development</li>
+          <li><span aria-hidden="true">✓</span> 5000 sq. ft. Gym</li>
+          <li><span aria-hidden="true">✓</span> 25,000 sq. ft. clubhouse</li>
+        </ul>
+        <button class="highlightBtn btn-animated popup-trigger" data-heading="Get More Details!" type="button" aria-label="Explore project highlights in detail">Know More</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Price -->
+ <section id="price" aria-labelledby="price-section-heading" class="fade-section">
+  <p class="priceSectionHeading" id="price-section-heading">Amara <strong>Price Plan</strong></p>
+
+  <div class="priceSectionWrapper">
+    <div class="priceRow" role="region" aria-label="Available apartment pricing options">
+      <!-- Repeating priceCard blocks -->
+      <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+        <p class="priceSize">1 BHK</p>
+        <p class="priceSize">446 Sq. Ft.</p>
+        <p class="priceAmount">₹ 73.5 Lacs*</p>
+        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      </div>
+
+      <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+        <p class="priceSize">1 BHK</p>
+        <p class="priceSize">446 Sq. Ft.</p>
+        <p class="priceAmount">₹ 73.5 Lacs*</p>
+        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      </div>
+
+      <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+        <p class="priceSize">1 BHK</p>
+        <p class="priceSize">446 Sq. Ft.</p>
+        <p class="priceAmount">₹ 73.5 Lacs*</p>
+        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      </div>
+
+      <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+        <p class="priceSize">1 BHK</p>
+        <p class="priceSize">446 Sq. Ft.</p>
+        <p class="priceAmount">₹ 73.5 Lacs*</p>
+        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      </div>
+
+      <div class="priceCard" role="group" aria-label="1 BHK apartment details">
+        <p class="priceSize">1 BHK</p>
+        <p class="priceSize">446 Sq. Ft.</p>
+        <p class="priceAmount">₹ 73.5 Lacs*</p>
+        <button class="priceBtn btn-animated popup-trigger" data-heading="Get Pricing Details!" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+ <section class="amenities fade-section" id="amenities" aria-labelledby="amenities-heading">
+  <p class="sectionHeading" id="amenities-heading">Amara <strong>Amenities</strong></p>
+
+  <div class="amenitiesCaurosel" role="region" aria-label="Amenity image carousel">
+    <div class="amenitiesSlide">
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/gym.webp" alt="Well-equipped gymnasium" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Gymnasium</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/indoorgames.webp" alt="Indoor games area" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Indoor Games</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/kids.webp" alt="Kids play area" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Kids Play Area</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/swimming.webp" alt="Swimming pool" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Infinity Pool</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/temple.webp" alt="Temple within the premises" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Temple</p>
+      </div>
+      <div class="amenitiesCard">
+        <img src="assests/images/amenities/theatre.webp" alt="Private mini-theatre" width="100%" height="auto" loading="lazy">
+        <p class="amenities-description">Theatre</p>
+      </div>
+    </div>
+
+    <div class="amenities-arrows">
+      <button class="arrowBtn amenities_prevBtn" type="button" aria-label="Previous amenity image">‹</button>
+      <button class="arrowBtn amenities_nextBtn" type="button" aria-label="Next amenity image">›</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1rem 0;">
+    <button class="amenitiesDownloadBtn btn-animated popup-trigger" data-heading="Download Amenities!" type="button" aria-label="Download full list of amenities">Download Amenities</button>
+  </div>
+</section>
+
+<div class="amenities-overlay" id="amenities-overlay" role="dialog" aria-modal="true" aria-labelledby="amenities-modal-heading" style="display: none;">
+  <div class="amenities-popup">
+    <button class="amenities-popup-close" type="button" aria-label="Close amenities popup">&times;</button>
+
+    <div class="amenities-popupWrapper">
+      <h2 id="amenities-modal-heading" class="visually-hidden" style="display: none;">Amenity Image Preview</h2>
+
+      <div class="amenities-popup-imageholder">
+        <img src="" alt="Selected amenity preview" class="amenities-popupimage" id="amenities-popupimage" loading="lazy">
+      </div>
+
+      <div class="carousel-arrows">
+        <button class="arrowBtn prev" id="amenities_prevBtn" type="button" aria-label="Previous image">‹</button>
+        <button class="arrowBtn next" id="amenities_nextBtn" type="button" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floor Plan -->
+<section id="floorplan" class="floorsection fade-section" aria-labelledby="floorplan-heading">
+  <p class="floorsectionHeading" id="floorplan-heading">Amara <strong>Floor Plan</strong></p>
+
+<div class="floorplan-caurosel-container">
+  <div class="floorplan-Wrapper" role="region" aria-label="Available floor plans">
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Unit Plan layout">
+      <p class="floorcardHeading">Unit Plan</p>
+      <div class="floorcardImg popup-trigger" data-heading="Get Unit Details!">
+        <img src="assests/images/floor/floor1.webp" alt="1 BHK Unit Layout - Amara Project" width="100%" height="100%" loading="lazy" />
+      </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated popup-trigger" data-heading="Get Unit Details!" type="button" aria-label="Download brochure for Unit Plan">Download Brochure</button>
+    </div>
+
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Floor Plan layout">
+      <p class="floorcardHeading">Floor Plan</p>
+      <div class="floorcardImg popup-trigger" data-heading="Get Floor Details!">
+        <img src="assests/images/floor/floor2.webp" alt="Typical Floor Plan - Amara Project" width="100%" height="100%" loading="lazy" />
+    </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated popup-trigger" data-heading="Get Floor Details!" type="button" aria-label="Download brochure for Floor Plan">Download Brochure</button>
+    </div>
+
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Master Plan layout">
+      <p class="floorcardHeading">Master Plan</p>
+      <div class="floorcardImg popup-trigger" data-heading="Get Master Plan Details!">
+        <img src="assests/images/floor/floor3.webp" alt="Master Plan Layout - Amara Project Site" width="100%" height="100%" loading="lazy" />
+      </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated popup-trigger" data-heading="Get Master Plan Details!" type="button" aria-label="Download brochure for Floor Plan">Download Brochure</button>
+    </div>
+  </div>
+  <div class="floor-arrows">
+      <button class="arrowBtn floor_prevBtn" type="button" aria-label="Previous Plan">‹</button>
+      <button class="arrowBtn floor_nextBtn" type="button" aria-label="Next Plan">›</button>
+    </div>
+</div>
+</section>
+
+<!-- Gallery Section-->
+ <section class="gallery fade-section" id="gallery" aria-labelledby="gallery-heading">
+  <p class="sectionHeading" id="gallery-heading">Amara <strong>Gallery</strong></p>
+
+  <div class="galleryCaurosel" role="region" aria-label="Project gallery carousel">
+    <div class="gallerySlide">
+      <div class="galleryCard">
+        <img src="assests/images/banner/banner.webp" alt="Amara Project Entrance View" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Living Room Interior - Amara Apartment" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Bedroom View - Amara Sample Flat" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/gallery/gallery.webp" alt="Modern Kitchen Layout - Amara Flat" width="100%" height="auto" loading="lazy">
+      </div>
+      <div class="galleryCard">
+        <img src="assests/images/icons/high1.webp" alt="Sports Arena Highlight - Amara" width="100%" height="auto" loading="lazy">
+      </div>
+    </div>
+
+    <div class="gallery-arrows">
+      <button class="arrowBtn car_prevBtn" type="button" aria-label="Previous gallery image">‹</button>
+      <button class="arrowBtn car_nextBtn" type="button" aria-label="Next gallery image">›</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1rem 0;">
+    <button class="galleryDownloadBtn btn-animated popup-trigger" data-heading="Download Gallery!" type="button" aria-label="Download full gallery as ZIP or PDF">Download Gallery</button>
+  </div>
+</section>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="gallery-modal-heading" style="display: none;">
+  <div class="gallery-popup">
+    <button class="gallery-popup-close" type="button" aria-label="Close gallery popup">&times;</button>
+
+    <div class="gallery-popupWrapper">
+      <h2 id="gallery-modal-heading" class="visually-hidden" style="display: none;">Gallery Image Preview</h2>
+
+      <div class="popup-imageholder">
+        <img src="" alt="Selected gallery image preview" class="gallery-popupimage" id="gallery-popupimage" loading="lazy">
+      </div>
+
+      <div class="carousel-arrows">
+        <button class="arrowBtn prev" id="gallery_prevBtn" type="button" aria-label="Previous image">‹</button>
+        <button class="arrowBtn next" id="gallery_nextBtn" type="button" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Location -->
+ <section id="location" class="section fade-section" aria-labelledby="location-heading">
+  <p class="sectionHeading" id="location-heading">Amara <strong>Location</strong></p>
+
+  <div class="locationWrapper">
+    <!-- Google Map -->
+    <div class="map-frame" role="region" aria-label="Google Map showing Lodha Amara location">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2869.492024637345!2d72.9892725!3d19.2332529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bbbcd4f20c15%3A0x4c36bff2609ee7cf!2sLodha%20Amara%20Thane!5e1!3m2!1sen!2sin!4v1751889832611!5m2!1sen!2sin"
+        width="100%"
+        height="350"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        title="Lodha Amara Location Map"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Accordion Info -->
+    <div class="accordion-wrapper">
+      <!-- Desktop Accordion Buttons -->
+      <div class="accordionBtn-wrapper" role="tablist" aria-label="Location Categories - Desktop">
+        <button class="accordionBtn accordion-active" type="button" role="tab" aria-selected="true" aria-controls="connectivity-content">Connectivity</button>
+        <button class="accordionBtn" type="button" role="tab" aria-selected="false">Education</button>
+        <button class="accordionBtn" type="button" role="tab" aria-selected="false">Healthcare</button>
+        <button class="accordionBtn" type="button" role="tab" aria-selected="false">Entertainment Hub</button>
+        <button class="accordionBtn" type="button" role="tab" aria-selected="false">Retail</button>
+      </div>
+
+      <!-- Mobile Accordion Content -->
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn accordion-active" type="button" aria-expanded="true" aria-controls="connectivity-content">
+          <span>Connectivity</span>
+          <span class="accordion-arrow accordion-arrow-active">&gt;</span>
+        </button>
+        <div class="accordion-content contentactive" id="connectivity-content">
+          <ul>
+            <li>Chhatrapati Shivaji International Airport – <span>45 minutes</span></li>
+            <li>BKC – <span>50 minutes</span></li>
+            <li>Borivali – <span>20 minutes</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="healthcare-content">
+          <span>Healthcare</span>
+          <span class="accordion-arrow">&gt;</span>
+        </button>
+        <div class="accordion-content" id="healthcare-content">
+          <ul>
+            <li>Jupiter Hospital</li>
+            <li>Hiranandani Hospital</li>
+            <li>Currae Multi-speciality Hospital</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="education-content">
+          <span>Education</span>
+          <span class="accordion-arrow">&gt;</span>
+        </button>
+        <div class="accordion-content" id="education-content">
+          <ul>
+            <li>Sulochanadevi Singhania School</li>
+            <li>Orchids International School</li>
+            <li>Vasant Vihar School</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="entertainment-content">
+          <span>Entertainment Hubs</span>
+          <span class="accordion-arrow">&gt;</span>
+        </button>
+        <div class="accordion-content" id="entertainment-content">
+          <ul>
+            <li>Korum Mall</li>
+            <li>Viviana Mall</li>
+            <li>Cinemax Wonder Mall</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-contentWrapper">
+        <button class="mobile-accordionBtn" type="button" aria-expanded="false" aria-controls="retail-content">
+          <span>Retail</span>
+          <span class="accordion-arrow">&gt;</span>
+        </button>
+        <div class="accordion-content" id="retail-content">
+          <ul>
+            <li>D Mart</li>
+            <li>Reliance Smart</li>
+            <li>Hypercity</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="locationEnquire">
+        <button class="locationEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" type="button" aria-label="Enquire about location connectivity and access">Enquire Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Virtual Site -->
+ <section class="videosection fade-section" id="virtualsite" aria-labelledby="virtual-tour-heading">
+  <h2 id="virtual-tour-heading" class="visually-hidden" style="display: none;">Virtual Site Tour of Amara</h2>
+
+  <div class="video-wrapper">
+    <div class="video-imageHolder">
+      <img
+        src="assests/images/banner/banner.webp"
+        alt="Thumbnail preview for virtual site tour video"
+        class="videoImg"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="video-play-button" role="group" aria-label="Play virtual site tour video">
+      <img
+        src="assests/images/icons/playicon.svg"
+        alt="Play icon"
+        width="100"
+        height="100"
+        class="video-playImg popup-trigger" data-heading="Request Virtual Site Tour!" 
+        loading="lazy"
+      >
+      <br>
+      <button class="playBtn popup-trigger" data-heading="Request Virtual Site Tour!" type="button" aria-label="Play virtual tour video">Watch Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+ <section class="about fade-section" id="about" aria-labelledby="about-heading">
+  <div>
+    <div class="aboutlogo">
+      <img
+        src="assests/images/logo/logo2.svg"
+        alt="Official logo of Lodha Amara"
+        width="200"
+        height="50"
+        class="aboutlogoimage"
+        loading="lazy"
+      />
+    </div>
+
+    <p class="aboutSectionHeading" id="about-heading">About <strong>Lodha</strong></p>
+
+    <div class="aboutpara">
+    <p class="clampText">
+      Lodha Group is one of India's most reputed and trusted real estate developers. Since 1980, the company has established itself as a reliable builder in the Indian real estate market. The developer is committed to quality, innovation, and professionalism. Lodha Group has earned many awards and accolades over the years. India Realty Awards has recognized them four times as "Builder of the Year." In 2016, the Economic Times awarded the group the "Most Trusted Real Estate Brand" award, recognizing the group as one of the country's most trusted real estate developers. Lodha Group is known for creating luxurious, high-end commercial and residential spaces. Lodha Bellissimo, Lodha The Park, and Lodha Fiorenza are some of their most prestigious projects in Mumbai. Additionally, they have developed projects in Pune, Hyderabad, and Bengaluru.
+    </p>
+    <a href="#" class="readMoreBtn" title="Read full project overview">Read More</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 1.5rem 0;">
+    <button class="aboutEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" type="button" aria-label="Enquire about Lodha projects">Enquire Now</button>
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer-container" role="contentinfo" aria-label="Footer">
+  <div class="footer-qr-section">
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+    <div class="footer-qr-item">
+      <img src="assests/images/qr/qr.webp" alt="QR code for Lodha Amara - RERA P51700046312" class="footer-qr-image" loading="lazy">
+      <p class="footer-rera-number">P51700046312</p>
+    </div>
+  </div>
+
+  <div class="footer-rera-info">
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Project registered under Government of India RERA Act 2016 |
+        <a href="http://www.maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="footer-rera-link">
+          www.maharera.maharashtra.gov.in
+        </a>
+      </span>
+    </div>
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Government RERA Authorised Advertiser: Homesfy Realty Ltd, Registration No - A51900000136
+      </span>
+    </div>
+    <div class="footer-rera-item">
+      <span class="footer-rera-checkmark" aria-hidden="true">✔</span>
+      <span class="footer-rera-text">
+        Project RERA: P51700046312
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <p class="footer-disclaimer-text">
+      <strong>Disclaimer:</strong> We're an authorized marketing channel partner. The provided content, images & videos are sourced from respective owners and are provided for informational purposes only. They do not constitute an offer to buy. Prices are subject to change without prior notice. Property availability is subject to confirmation. By submitting your contact details, you agree to receive calls, SMS, or emails from us.
+    </p>
+  </div>
+
+  <div class="footer-links-container">
+    &copy; Copyright
+    <span class="footer-separator">|</span>
+    <a href="https://www.homesfy.co.in/privacy.html" target="_blank" rel="noopener noreferrer" class="footer-link">Privacy Policy</a>
+    <span class="footer-separator">|</span>
+    <a href="https://www.homesfy.co.in/terms.html" target="_blank" rel="noopener noreferrer" class="footer-link">Terms & Conditions</a>
+  </div>
+
+  
+</footer>
+
+<section id="IVR_Mobile">
+<div class="ivr-container">
+  <div class="ivr-phone-container">
+    <a href="tel:+918976997450 ">
+      <i class="fa-call fa-icon" style="color: #fff;"></i>
+      <button>Call Us</button></a>
+  </div>
+  <div class="ivr-phone-container">
+    <a href="https://api.whatsapp.com/send?phone=+918976997450&text=I want to know more about the property" style="background-color: #25D366;"><i class="fa-whatsapp fa-icon" style="background-color: white;"></i>
+      <button style="color: white;">WhatsApp</button></a>
+  </div>
+</div>
+</section>
+
+<section id="popupform">
+        <div class="popup-overlay">
+
+        </div>
+        <div class="popup-form-container">
+           <h2 class="popup-form-heading">Limited Time Offer!</h2>
+           <button type="button" class="popup-overlay-close">&times;</button>
+            <form class="popupform-formholder" id=ModalFormSlug2 data-tracking-id=form_2_popupForm>
+                <div class="popup-name-container">
+                    <input type="text" placeholder="Enter Your Name" class="popup-form-name form-name" id="popup-form-name" required/>
+                </div>
+                <div class="popup-number-container">
+                    <select name="popup-country-code" id="" class="popup-country-code form-country" required>
+                        <option value="+91" selected>India (+91)</option>
+                        <option value="+91">India (+91)</option>
+                        <option value="+91">India (+91)</option>
+                    </select>
+                    <input type="text" placeholder="Enter Your Name" class="popup-form-number form-number" id="popup-form-number" required/>
+                </div>
+                <div class=popup-form-check>
+                  <input type=checkbox class=firstFormCheckbox id=consent_checkbox checked required>
+                  <label for=consent_checkbox class=firstFormConsentText>
+                  I consent to the use of provided data in accordance with the
+                  <a href=https://www.homesfy.co.in/privacy.html class=firstFormPrivacyLink>privacy policy</a>
+                  </label>
+                  </div>
+                <div class="popup-submitBtn-container">
+                <button class="popup-submitBtn" type="submit">Request Details</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <a href=# class="pdf-download-btn-desktop popup-trigger" data-heading="Download Brochure!" id=overviewRequestBtn>
+<div class="sparkle-effect desktop-sparkle-1"></div>
+<div class="sparkle-effect desktop-sparkle-2"></div>
+<div class="sparkle-effect desktop-sparkle-3"></div>
+<div class=desktop-text>
+<span class=desktop-title>Download</span>
+<span class=desktop-subtitle>Brochure</span>
+</div>
+<div class=desktop-pdf-icon>
+<img src=assests/images/icons/pdf.webp alt="PDF Icon" width=30px class=adobe-pdf-logo loading=lazy>
+</div>
+</a>
+<a href=# class="pdf-download-btn-mobile popup-trigger" data-heading="Download Brochure!" id=overviewRequestBtn>
+<div class="sparkle-effect mobile-sparkle-1"></div>
+<div class="sparkle-effect mobile-sparkle-2"></div>
+<div class="sparkle-effect mobile-sparkle-3"></div>
+<div class=mobile-pdf-ico>
+<img src=assests/images/icons/pdf.webp width=30px style=padding-top:40% alt="" loading=lazy>
+</div>
+<div class=mobile-text>
+<span class=mobile-title>Download</span>
+<span class=mobile-subtitle>Brochure</span>
+</div>
+</a>
+
+    <script src="assests/js/api.js"></script>
+    <script src="assests/js/custom.js"></script>
+    <script src="assests/js/script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup form</title>
+    <style>
+        #popupform {
+            display: none;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            height: 100%;
+        }
+        .popup-form-container {
+            z-index: 2000;
+            position: fixed;
+            top: 50%;
+            text-align: center;
+            background-color: white;
+            width: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 0px 20px;
+            padding: 1rem ;
+            box-shadow: 5px 5px 15px rgb(255, 255, 255, 0.5);
+        }
+        .popup-form-heading {
+            color: var(--colorprimary);
+            padding: 0;
+        }
+        .popupform-formholder {
+           padding: 0 0.5rem;
+            /* width: 100%; */
+        }
+        .popup-name-container {
+            padding: 1rem 0rem;
+            box-sizing: border-box;
+        }
+        .popup-form-name {
+            padding: 1rem 2rem;
+            border: 0px;
+            background-color: #f5f5f5;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .popup-number-container {
+            display: flex;
+            gap: 2%;
+            justify-content: center;
+            padding: 1rem 0rem;
+            box-sizing: border-box;
+        }
+        .popup-country-code {
+            padding: 1rem 0.5rem;
+            width: 30%;
+            border: 0px;
+            background: #f5f5f5;
+        }
+        .popup-form-number {
+            padding: 1rem 2rem;
+            width: 70%;
+            border: 0;
+            background: #f5f5f5;
+        }
+        .popup-submitBtn {
+            color: white;
+            background-color: var(--colorprimary);
+            border: 0px;
+            margin: 1rem 0 2rem;
+            padding: 1rem 2rem;
+            border-radius: 0 10px;
+        }
+        .popup-form-name:focus,.popup-country-code:focus,.popup-form-number:focus {
+            outline: var(--colorprimary) solid 1px;
+            /* border: var(--colorprimary); */
+        }
+        .popup-overlay-close {
+            background-color: white;
+            color: var(--colorprimary);
+            font-size: 1.5rem;
+            border: 1px solid var(--colorprimary);
+            cursor: pointer;
+            position: absolute;
+            top: 10%;
+            right: 5%;
+        }
+        @media (max-width:768px) {
+            .popup-form-container {
+                width: 80%;
+                text-align: left;
+            }
+            .popup-country-code {
+                padding: 1rem 0.5rem;
+                width: 40%;
+                border: 0px;
+                background: #f5f5f5;
+            }
+            .popup-form-number {
+                padding: 1rem 2rem;
+                width: 60%;
+                border: 0;
+                background: #f5f5f5;
+            }
+            .popup-form-heading {
+                color: var(--colorprimary);
+                padding: 0 1rem;
+            }
+        }
+    </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            --colorprimary:#00b86b;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="aboutEnquireBtn btn-animated" type="button" aria-label="Enquire about Lodha projects">Enquire Now</button>
+    <br><br>
+    <button class="playBtn" type="button" aria-label="Play virtual tour video">Watch Now</button>
+    <img
+        src="assests/images/icons/playicon.svg"
+        alt="Play icon"
+        width="100"
+        height="100"
+        class="video-playImg"
+        loading="lazy"
+      >
+      <br><br>
+      <button class="locationEnquireBtn btn-animated" type="button" aria-label="Enquire about location connectivity and access">Enquire Now location</button>
+      <br><br>
+      <button class="galleryDownloadBtn btn-animated" type="button" aria-label="Download full gallery as ZIP or PDF">Download Gallery</button>
+      <br><br>
+      <div class="floorcardImg">
+        <img src="assests/images/floor/floor3.webp" alt="Master Plan Layout - Amara Project Site" width="100px" height="100px" loading="lazy" />
+      </div>
+      <button class="downloadBrochureBtn btn-animated" type="button" aria-label="Download brochure for Floor Plan">Download Brochure</button>
+      <br><br>
+      <button class="amenitiesDownloadBtn btn-animated" type="button" aria-label="Download full list of amenities">Download Amenities</button>
+      <br><br>
+      <button class="priceBtn btn-animated" type="button" aria-label="Download price sheet for 1 BHK 446 Sq. Ft.">Get Price Sheet</button>
+      <br><br>
+      <button class="highlightBtn btn-animated" type="button" aria-label="Explore project highlights in detail">Know More highlights</button>
+      <br><br>
+      <button class="bannerEnquireBtn btn-animated popup-trigger" data-heading="Get More Details!" aria-label="Open Enquiry Form">Enquire Now banner</button>
+    <section id="popupform">
+        <div class="popup-overlay">
+
+        </div>
+        <div class="popup-form-container">
+           <h2 class="popup-form-heading">Limited Time Offer!</h2>
+           <button type="button" class="popup-overlay-close">&times;</button>
+            <form class="popupform-formholder">
+                <div class="popup-name-container">
+                    <input type="text" placeholder="Enter Your Name" class="popup-form-name" />
+                </div>
+                <div class="popup-number-container">
+                    <select name="popup-country-code" id="" class="popup-country-code">
+                        <option value="+91" selected>India (+91)</option>
+                        <option value="+91">India (+91)</option>
+                        <option value="+91">India (+91)</option>
+                    </select>
+                    <input type="text" placeholder="Enter Your Name" class="popup-form-number" />
+                </div>
+                <button class="popup-submitBtn" type="button">Request Details</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        let popupheading = document.querySelector(".popup-form-heading");
+        document.querySelectorAll(".popup-trigger").forEach((element)=>{
+            element.addEventListener("click",()=>{
+                popupheading.innerHTML = element.getAttribute("data-heading");
+                document.querySelector("#popupform").style.display="block";
+            })
+        })
+    </script>
+
+    <!-- <script>
+        let popupheading = document.querySelector(".popup-form-heading");
+        let classlist1 = ["bannerEnquireBtn", "highlightBtn", "aboutEnquireBtn","locationEnquireBtn"];
+        let classlist2 = ["video-playImg","playBtn"];
+        let classlist3 = ['floorcardImg',"downloadBrochureBtn"];
+        
+        document.querySelectorAll(".bannerEnquireBtn, .highlightBtn, .priceBtn, .amenitiesDownloadBtn, .downloadBrochureBtn, .floorcardImg, .galleryDownloadBtn, .locationEnquireBtn, .video-playImg, .playBtn, .aboutEnquireBtn").forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+               if (classlist1.some(className => element.classList.contains(className))) {
+                    popupheading.innerHTML = "Get More Details!";
+               }
+               else if (classlist2.some(className =>  element.classList.contains(className))) {
+                    popupheading.innerHTML = "Request Virtual Site Tour!";
+               }
+               else if (element.classList.contains("priceBtn")) {
+                    popupheading.innerHTML = "Get Pricing Details!";
+               }
+               else if (element.classList.contains("amenitiesDownloadBtn")) {
+                    popupheading.innerHTML = "Download Amenities!";
+               }
+               else if (element.classList.contains("galleryDownloadBtn")) {
+                    popupheading.innerHTML = "Download Gallery!"
+               }
+               else if (classlist3.some(className =>  element.classList.contains(className))) {
+                    popupheading.innerHTML = 'Download Brochure!';
+               }
+               document.querySelector("#popupform").style.display="block";
+            })
+        })
+    </script> -->
+
+    <script>
+        window.addEventListener("load",()=>{
+            setTimeout(()=>{
+                document.querySelector("#popupform").style.display="block";
+            },4000);
+        })
+
+        document.querySelector(".popup-overlay").addEventListener("click",()=>{
+            document.querySelector("#popupform").style.display="none";
+        })
+        document.querySelector(".popup-overlay-close").addEventListener("click",()=>{
+            document.querySelector("#popupform").style.display="none";
+        })
+    </script>
+</body>
+</html>

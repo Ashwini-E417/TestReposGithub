@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price</title>
+    <style>
+        body {
+            margin: 0px;
+            font-family: sans-serif;
+        }
+        .section {
+            padding: 1rem 5rem;
+        }
+        .priceSectionHeading {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            padding: 0rem  5rem;
+        }
+        .priceSectionWrapper {
+            background-color: rgb(240, 240, 240);
+            padding: 1rem 5rem;
+        }
+
+        .priceRow {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10%;
+        }
+
+        .priceCard {
+            background-image: linear-gradient(-45deg,#102139,#000000,#041826);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            flex: 0 0 20%;
+            margin-bottom: 1.5rem;
+        }
+        .priceSize {
+            font-size: 0.8rem;
+        }
+        .priceAmount {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .priceBtn {
+            color: white;
+            background-color: #00b86b;
+            border: 0px;
+            padding: 0.6rem 2rem;
+            border-radius: 10px;
+        }
+        @media (max-width:768px) {
+            .section {
+                padding: 0rem;
+            }
+            .priceSectionHeading {
+                padding: 1rem;
+            }
+            .priceSectionWrapper{
+                padding: 1rem;
+            }
+            .priceRow {
+                justify-content: space-around;
+                gap:0%;
+            }
+             
+            .priceCard {
+                margin-bottom: 1rem;
+                flex: 0 0 30%;
+            }
+            .priceAmount {
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p class="priceSectionHeading">Amara <strong>Price Plan</strong></p>
+
+        <div class="priceSectionWrapper">
+            <div class="priceRow">
+                <div class="priceCard">
+                    <p class="priceSize">Type - 1 BHK</p>
+                    <p class="priceSize">Size - 446 Sq. Ft.</p>
+                    <p class="priceAmount">₹ 73.5 Lacs*</p>
+                    <button class="priceBtn">View</button>
+                </div>
+                <div class="priceCard">
+                    <p class="priceSize">Type - 1 BHK</p>
+                    <p class="priceSize">Size - 446 Sq. Ft.</p>
+                    <p class="priceAmount">₹ 73.5 Lacs*</p>
+                    <button class="priceBtn">View</button>
+                </div>
+                <div class="priceCard">
+                    <p class="priceSize">Type - 1 BHK</p>
+                    <p class="priceSize">Size - 446 Sq. Ft.</p>
+                    <p class="priceAmount">₹ 73.5 Lacs*</p>
+                    <button class="priceBtn">View</button>
+                </div>
+                <div class="priceCard">
+                    <p class="priceSize">Type - 1 BHK</p>
+                    <p class="priceSize">Size - 446 Sq. Ft.</p>
+                    <p class="priceAmount">₹ 73.5 Lacs*</p>
+                    <button class="priceBtn">View</button>
+                </div>
+                <div class="priceCard">
+                    <p class="priceSize">Type - 1 BHK</p>
+                    <p class="priceSize">Size - 446 Sq. Ft.</p>
+                    <p class="priceAmount">₹ 73.5 Lacs*</p>
+                    <button class="priceBtn">View</button>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+</body>
+</html>

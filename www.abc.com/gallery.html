@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        .section {
+            padding: 1rem 5rem;
+            background-color: rgb(240, 240, 240);
+            overflow: hidden;
+        }
+        .sectionHeading {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        .galleryCaurosel {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .gallerySlide {
+            width: 100%;
+            display: flex;
+            gap: 5%;
+            flex-wrap: nowrap;
+            transition: transform 0.3s ease-in-out;
+        }
+        .galleryCard {
+            flex: 0 0 30%;
+            box-sizing: border-box;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        .galleryCard img {
+            width: 100%;
+            height: 100%;
+        }
+        .galleryCard img:hover {
+            transform: scale(1.1);
+        }
+        .galleryindicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 6rem;
+        }
+        .overlay {
+            position: fixed;
+            top: 3rem;
+            padding: 5rem 0;
+            background-color: rgba(0, 0, 0,0.7);
+            width: 100%;
+            height: 100%;
+            display: none;
+            backdrop-filter: blur(8px);
+        }
+        .gallery-popupWrapper {
+            display: block;
+            /* align-items: center;
+            justify-content: space-between; */
+            padding: 0rem;
+            position: relative;
+        }
+        .popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .arrowBtn,.gallery-popup-close {
+            padding: 1rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+        }
+        .arrowBtn {
+            background-color: rgba(0, 0, 0,0.7);
+        }
+        .car_nextBtn {
+            position: absolute;
+            right: 0px;
+        }
+        
+        .gallery-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 5rem;
+            background-color: rgba(0, 0, 0,0.7);
+        }
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0px;
+            /* pointer-events: none; */
+        }
+        .gallery-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* display: flex;
+            justify-content: space-between; */
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .gallery-popupimage {
+            width: 700px;
+            height: 400px;
+        }
+
+        @media (max-width:768px) {
+            .section {
+            padding: 1rem;
+            }
+
+            .gallery-popupWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0rem;
+            }
+            .gallery-popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            }
+
+            .arrowBtn,.gallery-popup-close {
+            padding: 0.8rem;
+            /* border-radius: 50%; */
+            border: 0px;
+            /* border: 1px solid white; */
+            /* background-color: rgba(255,255,255,0.3); */
+            color: white;
+            }
+
+            .popup-imageholder {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .galleryCard {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 1rem;
+            overflow: hidden;
+            }
+
+        .gallery-popupimage {
+            width: 300px;
+            height: 300px;
+        }
+
+        }
+        @media (max-width:600px) {
+            .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px;
+            /* pointer-events: none; */
+        }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <p class="sectionHeading">Amara <strong>Gallery</strong></p>
+        <div class="galleryCaurosel">
+            <!-- <p class="galleryindicator">1/5</p> -->
+            <div class="gallerySlide">
+                <div class="galleryCard">
+                    <img src="assests/images/banner/banner.webp" alt="modular kitchen" width="100%" height="auto">
+                </div>
+                <div class="galleryCard" >
+                    <img src="assests/images/gallery/gallery.webp" alt="modular kitchen" width="100%" height="auto">
+                </div>
+                <div class="galleryCard" >
+                    <img src="assests/images/gallery/gallery.webp" alt="modular kitchen" width="100%" height="auto">
+                </div>
+                <div class="galleryCard" >
+                    <img src="assests/images/gallery/gallery.webp" alt="modular kitchen" width="100%" height="auto">
+                </div>
+                <div class="galleryCard" >
+                    <img src="assests/images/icons/high1.webp" alt="modular kitchen" width="100%" height="auto">
+                </div>
+            </div>
+            <div class="gallery-arrows">
+                    <button class="arrowBtn car_prevBtn">‹</button>
+                    <button class="arrowBtn car_nextBtn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="overlay" id="overlay">
+            <div class="gallery-popup">
+                <button class="gallery-popup-close">&times;</button>
+                <div class="gallery-popupWrapper">
+                    
+                    <div class="popup-imageholder">
+                        <img src="assests/images/gallery/gallery.webp" alt="imageholder" class="gallery-popupimage" id="gallery-popupimage">
+                    </div>
+                    <div class="carousel-arrows">
+                    <button class="arrowBtn prev" id="gallery_prevBtn">‹</button>
+                    <button class="arrowBtn next" id="gallery_nextBtn">›</button>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+
+    <script>
+        let galleryIndex ;
+        let galleryImg = document.querySelectorAll(".galleryCard img");
+        let galleryCard = document.querySelectorAll(".galleryCard");
+        let gallerySlide = document.querySelector(".gallerySlide");
+        let galleryTrans = 0;
+        let gcount = galleryImg.length-1;
+        let ccount = 1;
+        let galleryCaurosel = setInterval(cauroselbegin, 3000);
+        let gallerypopupopen = false
+
+        function cauroselbegin() {
+            console.log(ccount);
+            
+            if (window.innerWidth<'768') {
+                galleryTrans += 105;
+                if (ccount==gcount+1) {
+                console.log("0");
+                ccount=0;
+                galleryTrans=0;
+            }
+            }
+            else {
+                galleryTrans += 35;
+                if (ccount>=gcount-1) {
+                    console.log("0");
+                    ccount=0;
+                    galleryTrans=0;
+                }
+            }
+            gallerySlide.style.transform = `translateX(-${galleryTrans}%)`;
+            ccount=ccount+1;
+        }
+
+        // window.addEventListener("resize",()=>{
+        //     ccount=1;
+        //     clearInterval(galleryCaurosel);
+            
+        //     galleryCaurosel = setInterval(cauroselbegin,3000);
+        // })
+
+        galleryImg.forEach((element)=>{
+            element.addEventListener("mouseenter",function () {
+                clearInterval(galleryCaurosel);
+            })
+        })
+
+        galleryImg.forEach((element)=>{
+            element.addEventListener("mouseout",function () {
+                if (!gallerypopupopen) {
+                console.log("mouseout")
+                galleryCaurosel = setInterval(cauroselbegin, 3000);
+                }
+            })
+        })
+
+        let gallerypopupimage = document.getElementById("gallery-popupimage");
+        let overlay = document.getElementById("overlay");
+        galleryImg.forEach((element,index) => {
+            element.addEventListener("click",(e)=>{
+                e.preventDefault();
+                overlay.style.display = "block";
+                gallerypopupimage.src = element.src;
+                clearInterval(galleryCaurosel);
+                gallerypopupopen = true;
+                galleryIndex = index;
+            })
+        })
+
+        document.querySelector(".gallery-popup-close").addEventListener("click",()=>{
+            overlay.style.display = "none";
+            gallerypopupimage.src = "";
+            gallerypopupopen = false;
+            galleryCaurosel = setInterval(cauroselbegin,3000);
+        })
+
+        document.querySelector("#gallery_prevBtn").addEventListener("click",()=>{
+            if (galleryIndex==0) {
+                galleryIndex=gcount;
+            }
+            else {galleryIndex--;}
+            gallerypopupimage.src = galleryImg[galleryIndex].src;
+            console.log(galleryIndex);
+        })
+
+        document.querySelector("#gallery_nextBtn").addEventListener("click",()=>{
+            if (galleryIndex==gcount) {
+                galleryIndex=0;
+            }
+            else {galleryIndex++;}
+            gallerypopupimage.src = galleryImg[galleryIndex].src;
+            console.log(galleryIndex);
+        })
+        
+        document.querySelector(".car_prevBtn").addEventListener("click",()=>{
+            ccount=ccount-1;
+            console.log("hi");
+            if (window.innerWidth<'768') {
+                galleryTrans -= 105;
+                if (ccount<0) {
+                console.log("0");
+                ccount=gcount;
+                galleryTrans=gcount*105;
+            }
+            }
+            else {
+                galleryTrans -= 35;
+                if (ccount<0) {
+                    console.log("0");
+                    ccount=gcount-2;
+                    galleryTrans=ccount*35;
+                }
+            }
+            gallerySlide.style.transform = `translateX(-${galleryTrans}%)`;
+            clearInterval(galleryCaurosel);
+            galleryCaurosel = setInterval(galleryCaurosel,300);
+            
+        })
+    
+        document.querySelector(".car_nextBtn").addEventListener("click",()=>{
+            ccount=ccount+1;
+            console.log("hi");
+            if (window.innerWidth<'768') {
+                console.log(ccount,gcount);
+                galleryTrans += 105;
+                if (ccount>gcount) {
+                console.log("0");
+                ccount=0;
+                galleryTrans=0;
+            }
+            }
+            else {
+                galleryTrans += 35;
+                if (ccount>=gcount-1) {
+                    console.log("0");
+                    ccount=0;
+                    galleryTrans=0;
+                }
+            }
+            gallerySlide.style.transform = `translateX(-${galleryTrans}%)`;
+            clearInterval(galleryCaurosel);
+            
+            galleryCaurosel = setInterval(cauroselbegin,3000);
+        })
+    
+    </script>
+    
+</body>
+</html>

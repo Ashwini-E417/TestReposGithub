@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    * {
+        --colorprimary:#00b86b;
+    }
+    #floorplan {
+    scroll-margin-top: 80px;
+}
+        .floorsection {
+            padding: 0.1rem 5rem 2rem;
+            margin-top: 2rem;
+        }
+        .floorsectionHeading {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin: 2rem 0;
+        }
+        .floorplan-Wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 2%;
+        }
+        .downloadBrochureBtn {
+            width: 100%;
+            color: #fff;
+            background-color: var(--colorprimary);
+            padding: 0.8rem 0rem;
+            border: 1px solid var(--colorprimary);
+            cursor: pointer;
+            border-radius: 0 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+        .floorCard {
+            border: 1px solid var(--colorprimary);
+            border-radius: 0 30px;
+            background-color: white;
+        }
+        .floorcardImg {
+            position: relative;
+            cursor: pointer;
+        }
+        .floorcardHeading {
+            padding: 0.8rem 1.5rem;
+            margin: 0px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--colorprimary);
+            background-color: rgb(206 241 227);
+            width: auto;
+            border-radius: 0px 30px 0 0;
+        }
+
+        /* .floorCard:nth-child(1) .floorcardHeading{
+            width: auto;
+            border-radius: 0 30px 0 0;
+        } */
+
+        .floorcardImg img {
+            border-radius: 0 0 0 30px;
+        }
+
+        .floorCard img:hover {
+            filter: grayscale(1);
+        }
+        .floor_nextBtn {
+            position: absolute;
+            right: 0px;
+        }
+        .floor-arrows {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            /* display: flex;
+            justify-content: space-between; */
+            width: 100%;
+            pointer-events: none;
+        }
+
+        @media (max-width:768px) {
+            .floorsection {
+                padding: 1rem 0rem;
+                background-image: none;
+            }
+            .floorsectionHeading {
+                padding: 1rem;
+                margin: 0;
+            }
+            .floorplan-Wrapper {
+                display: flex;
+                flex-wrap: nowrap;
+                transition: transform 0.3s ease-in-out;
+                width: auto;
+                gap: 0;
+            }
+            .floorCard {
+                padding: 1rem;
+                border: 0;
+            }
+            .floor-item {
+                text-align: center;
+                flex: 0 0 100%;
+                height: 35rem;
+                /* border: 1px solid black; */
+            }
+            .floorcardHeading {
+                width: fit-content;
+                border-radius: 0 10px;
+            }
+            .floorcardImg img {
+            border-radius: 0px 30px;
+            height: 25rem;
+            }
+            .downloadBrochureBtn {
+                background-color: var(--colorprimary);
+                color: white;
+                font-size: 1.1rem;
+                border-radius: 0 10px;
+                font-size: 1rem;
+                width: auto;
+                padding: 1rem 2rem;
+                margin: 0.2rem 0 1rem 0;
+            }
+            .floorplan-caurosel-container {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+            .floor-arrows {
+                display: block;
+            }
+        }
+
+   </style>
+
+   <style>
+    .arrowBtn {
+            padding: 1rem;
+            border: 0px;
+            /* border: 1px solid white; */
+            color: white;
+            font-size: 2rem;
+            pointer-events: auto;
+        }
+        .arrowBtn {
+            background-color: rgba(0, 0, 0,0.7);
+        }
+        
+   </style>
+</head>
+<body>
+    <section id="floorplan" class="floorsection fade-section" aria-labelledby="floorplan-heading">
+  <p class="floorsectionHeading" id="floorplan-heading">Amara <strong>Floor Plan</strong></p>
+
+<div class="floorplan-caurosel-container">
+  <div class="floorplan-Wrapper" role="region" aria-label="Available floor plans">
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Unit Plan layout">
+      <p class="floorcardHeading">Unit Plan</p>
+      <div class="floorcardImg">
+        <img src="assests/images/floor/floor1.webp" alt="1 BHK Unit Layout - Amara Project" width="100%" height="100%" loading="lazy" />
+      </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated" type="button" aria-label="Download brochure for Unit Plan">Download Brochure</button>
+    </div>
+
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Floor Plan layout">
+      <p class="floorcardHeading">Floor Plan</p>
+      <div class="floorcardImg">
+        <img src="assests/images/floor/floor2.webp" alt="Typical Floor Plan - Amara Project" width="100%" height="100%" loading="lazy" />
+    </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated" type="button" aria-label="Download brochure for Floor Plan">Download Brochure</button>
+    </div>
+
+    <div class="floor-item">
+    <div class="floorCard" role="group" aria-label="Master Plan layout">
+      <p class="floorcardHeading">Master Plan</p>
+      <div class="floorcardImg">
+        <img src="assests/images/floor/floor3.webp" alt="Master Plan Layout - Amara Project Site" width="100%" height="100%" loading="lazy" />
+      </div>
+    </div>
+    <button class="downloadBrochureBtn btn-animated" type="button" aria-label="Download brochure for Floor Plan">Download Brochure</button>
+    </div>
+  </div>
+  <div class="floor-arrows">
+      <button class="arrowBtn floor_prevBtn" type="button" aria-label="Previous Plan">‹</button>
+      <button class="arrowBtn floor_nextBtn" type="button" aria-label="Next Plan">›</button>
+    </div>
+</div>
+</section>
+
+<script>
+    window.addEventListener("resize",updatefloorCarousel);
+    window.addEventListener("load",updatefloorCarousel);
+    let floorInterval = null;
+    let findex = 0;
+    let floorcount = document.querySelectorAll(".floor-item").length;
+    let floorWrapper = document.querySelector(".floorplan-Wrapper");
+
+    function updatefloorCarousel(){
+        console.log(window.innerWidth);
+        if (window.innerWidth<=768) {
+            clearInterval(floorInterval);
+            findex=0;
+            floorCarousel();
+            floorInterval = setInterval(floorCarousel, 3000);
+            console.log("hello");
+        }
+        else {
+            console.log("hello thre");
+            clearInterval(floorInterval);
+            floorWrapper.style.transform = `translateX(0%)`;
+        }
+    }
+
+    function floorCarousel() {
+        findex++;
+        if(findex >=floorcount) {
+            findex = 0;
+        }
+        floorWrapper.style.transform = `translateX(-${findex*100}%)`;
+    }
+
+    document.querySelector(".floor_prevBtn").addEventListener("click",()=>{
+        console.log(findex)
+        clearInterval(floorInterval);
+        if(findex == 0 ) {
+            findex = floorcount-1;
+        }
+        else {findex-=1;}
+        floorWrapper.style.transform = `translateX(-${findex*100}%)`;
+        floorInterval = setInterval(floorCarousel, 3000);
+    })
+
+    document.querySelector(".floor_nextBtn").addEventListener("click",()=>{
+        console.log(findex)
+        clearInterval(floorInterval);
+        if(findex == floorcount-1 ) {
+            findex = 0;
+        }
+        else {findex+=1;}
+        floorWrapper.style.transform = `translateX(-${findex*100}%)`;
+        floorInterval = setInterval(floorCarousel, 3000);
+    })
+</script>
+</body>
+</html>
