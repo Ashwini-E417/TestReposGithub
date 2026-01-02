@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        .footer-container {background-color: #f0f0f0;color: #555;padding: 45px 5%;font-family: 'Nunito', sans-serif;font-size: 12px;line-height: 1.5;}
+        .footer-rera-info {margin-bottom: 15px;}
+        .footer-rera-item {display: flex;align-items: flex-start;margin-bottom: 8px;}
+        .footer-rera-checkmark {color: #4CAF50;font-size: 16px;margin-right: 8px;flex-shrink: 0;}
+        .footer-rera-text {flex: 1;}
+        .footer-rera-link {color: #555;text-decoration: underline;}
+        .footer-disclaimer-text {font-size: 12px;color: #555;margin-bottom: 15px;}
+        .footer-links-container {font-size: 12px;color: #555;display: flex;align-items: center;gap: 10px;flex-wrap: wrap;}
+        .footer-separator {margin: 0 5px;color: #555;}
+        .clampText { display: block; max-height: 50px;overflow: hidden;transition: max-height 0.3s ease-in-out; }
+        .clampText.active {max-height: 1000px;}
+        .readMoreLink { color: #000; cursor: pointer; margin-left: 5px;display: flex;gap: 5px;align-items: center;text-decoration: underline;font-weight: 600; }
+    </style>
+</head>
+<body>
+    <footer class=footer-container role=contentinfo aria-label=Footer id=footer>
+<div class=footer-rera-info>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Project registered under Government of India RERA Act 2016 |
+<a href=https://maharera.maharashtra.gov.in target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>
+www.maharera.maharashtra.gov.in
+</a>
+</span>
+</div>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Government RERA Authorised Advertiser: Homesfy Realty Ltd, Registration No - A51900000136
+</span>
+</div>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Project RERA: 
+<span class="clampText">
+<ul style="list-style-position: outside;padding: 0 15px;">
+    <li>Hiranandani Fortune City : Iris - P52000050194 | Acacia - P52000050196</li>
+    <li>Raheja Jade City : P51700080277</li>
+    <li>Godrej Green Terraces : P52000026790 | P52000030367 | P52000049669 | P52000056268 | P5200052251</li>
+    <li>L&T West Square Seawoods : PHASE 1 - P51700020275, JASPER AT WEST SQUARE - P51700045793, OPAL AT L&T WEST SQUARE SEAWOODS - P51700045794, AMBER AT L&T WEST SQUARE - P51700045795, NORTH TOWERS - P51700026653, West Square - P51700056254</li>
+    <li>Raheja Lunaris: P51700076867</li>
+    <li>Godrej Eternal Palms: PM1330002500429</li>
+    <li>Wadhwa THe Haven Panvel : Phase 1 MahaRERA - P52000052619</li>
+    <li>Kalpataru Aria: P52000047146 | P52000050704 | P52000051573</li>
+    <li>Godrej Woodside Estate: P52000077384 and P52000077385</li>
+</ul>
+</span>
+<br>
+<a href="#" class="readMoreLink"><span>Show More</span><img src="assets/images/icons/arrow.webp" loading="lazy" width="18" height="18"></a>
+</span>
+</div>
+</div>
+<!-- <br> -->
+<div>
+<p class=footer-disclaimer-text>
+<strong>Disclaimer: </strong> We're an authorized marketing channel partner (Homesfy Realty Ltd). The provided content, images & video are sourced from respective owners and are provided only for information purposes, it does not constitute an offer to buy any service. The price plans are subject to change without prior notice, and the properties mentioned are subject to availability. You can receive a call, SMS, or emails on contact details registered with us.
+</p>
+</div>
+<div class=footer-links-container>
+&copy; Copyright
+<span class=footer-separator>|</span>
+<a href=https://www.homesfy.co.in/privacy.html target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>Privacy Policy</a>
+<span class=footer-separator>|</span>
+<a href=https://www.homesfy.co.in/terms.html target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>Terms & Conditions</a>
+</div>
+</footer>
+
+<script>
+    let readMoreLink = document.querySelector(".readMoreLink");
+    readMoreLink.addEventListener("click",(e,i)=>{
+        e.preventDefault();
+        document.querySelector(".clampText").classList.toggle("active");
+        readMoreLink.querySelector("span").innerHTML = (readMoreLink.querySelector("span").innerHTML === "Show More") ? "Show Less" : "Show More"; 
+    })
+</script>
+</body>
+</html>

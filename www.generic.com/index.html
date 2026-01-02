@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Template</title>
+
+    <link rel="preload" as="image" href="assets/images/logo/logo.png">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="preload" href="assets/images/banner/banner1.webp" as="image" media="(min-width:769px)">
+<link rel="preload" href="assets/images/banner/mobBanner1.webp" as="image" media="(max-width:769px)">
+
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        input,a,button,select {all: unset;}
+        a,button {cursor: pointer;}
+        body {font-family: "Nunito",sans-serif;font-display: swap;font-weight: 400;}
+        .fa {width: 25px;height: 25px;-webkit-mask: var(--icon-url) no-repeat center/contain; mask: var(--icon-url) no-repeat center/contain;background-color: #fff;display: inline-block;}
+        .fa-left {--icon-url: url(assets/images/icons/chevron-left.svg)}
+        .fa-right {--icon-url: url(assets/images/icons/chevron-right.svg)}
+
+        header {position: fixed;top: 0;left: 0;width: 100%;height: 80px;z-index: 100;}
+        .navbar {display: flex;align-items: center;justify-content: space-between;padding: 5px 5%;background: transparent;color: #fff;height: 80px;}
+        .navbar.scrolled {background-color: #fef9eb;color: #333;}
+        .navigationMenu {display: flex;gap: 15px;align-items: center;justify-content: flex-start;transform: translateX(0);}
+        .navLink {font-size: 18px;}
+        .headerContact {display: flex;gap: 15px;margin: 0 15px;align-items: center;justify-content: center;}
+        .navbarContact, .navbarWhatsapp {display: flex;gap: 5px;align-items: center;justify-content: center;padding: 10px 15px;border-radius: 5px;}
+        .navbarContact {background-color: #fff;color: #333}
+        .navbarWhatsapp {background-color: #42ea5f;color: #fff;}
+        .burgerMenu {display: none;}
+        .invertImage {filter: brightness(0) invert(1);}
+        .navbar.scrolled .invertImage {filter: brightness(1) invert(0);}
+        .bannerImageSection {position: relative;overflow: hidden;}
+        .bannerImageSection::before {position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;background-color: rgb(0,0,0,0.7);content: "";z-index: 1;}
+        .bannerImageCarouselContainer {display: flex;align-items: center;gap: 0;overflow: visible;transition: transform 1s ease-in-out;}
+        .bannerPropertyImage {width: 100vw;height: 100vh;display: block;position: relative;}
+        .bannerNavContainer {display: flex; gap: 35px;justify-content: center;position: absolute;bottom: 20px; left: 50%;transform: translateX(-50%);z-index: 1;}
+        .bannerPrev,.bannerNext {background: rgb(0,0,0,0.7);border-radius: 50px; border: 1px solid #fff;display: flex;align-items: center;justify-content: center;width: 45px; height: 45px;}
+        .bannerSection{position: relative;}
+        .bannerContentSection {position: absolute;top: 50%;left: 10%;transform: translate(0%,-50%);color: #fff;text-align: center;z-index: 1;text-align: left;}
+        .bannerSubtitle {font-size: 1.2vw;font-weight: 400;margin-bottom: 15px;text-transform: uppercase;letter-spacing: 5px;display: flex;align-items: center;}
+        .bannerSubtitle::after,.bannerSubtitle::before {content: "";width: 50px;height: 1px;background-color: #fff;margin: 15px;align-self: center;}
+        .bannerMainTitle {font-size: 38px;font-weight: 700;margin-bottom: 15px;text-transform: uppercase;}
+        .bannerMainSubTitle {font-size: 1.75rem;margin-bottom: 15px;font-weight: 500;}
+        .bannerContentSection p {font-size: 18px;margin-bottom: 10px;text-transform: uppercase;letter-spacing: 1px;display: flex;align-items: center;gap: 5px;}
+        .bannerOfferSection {margin: 10px 0;}
+        .bannerContentPrice {padding: 10px 20px;border-radius: 50px;background: linear-gradient(90deg, #1b6b4b, #0ac776, #1b6b4b);width: fit-content;}
+
+        .bannerFormContainer {position: absolute;top: 50%;right: 5%;transform: translate(0%,-50%);background-color:#1b6b4b;padding: 10px;border-radius: 0px;box-shadow: 0 4px 8px rgba(0,0,0,0.2);z-index: 1;width: 100%;max-width:30vw;color: #fff;}
+        .bannerFormHeading {font-size: 1.5vw;font-weight: 600;margin-bottom: 15px;text-align: center;}
+        .bannerFormInput {margin-bottom: 15px;border-bottom: 1px solid #fff;padding: 5px 10px;}
+        .bannerFormConsent {display: flex;align-items: center;gap: 10px;padding: 0px 0px 15px;}
+        input[type=text],select {width: 100%;background: transparent;color: #fff;font-size: 16px;border: none;cursor: pointer;}
+        input::placeholder {color: #ddd;}
+        input:focus,select:focus {outline: none;}
+        option{color: #000;}
+        .bannerSubmit {width: 100%;background-color: #fff;color: #1b6b4b;text-align: center;padding: 10px 0px;border-radius: 5px;font-size: 1.2vw;font-weight: 600;cursor: pointer;transition: background-color 0.3s ease;}
+        .bannerSubmit:hover {background-color: #ddd;}
+        input[type="checkbox"] {  appearance: none;-webkit-appearance: none;width: 15px;height: 15px; background: #fff; cursor: pointer; position: relative;}
+        input[type="checkbox"]:checked::after {content: "✓"; color: #1b6b4b; font-size: 13px; position: absolute; left: 2px; top: -2px;}
+        .consentLabel {font-size: 10px; color: #ddd;}
+        .bannerForm {border: 1px solid #aaa;padding: 25px 20px;border-radius: 10px;}
+        @media (max-width:1024px) {
+            header {position: relative;}
+            .navbar {background-color: #fef9eb;}
+            .navbar.scrolled {position: fixed; top: 0; left: 0; width: 100vw;height: auto;}
+            .invertImage {filter: brightness(1) invert(0);}
+            .headerContact {display: none;}
+            .burgerMenu { display: flex; flex-direction: column; cursor: pointer; z-index: 1001; }
+            .burgerMenu span { width: 28px; height: 3px; background-color: #333; margin: 4px 0; transition: 0.3s; border-radius: 2px; }
+            .burgerMenu.active span:nth-child(1) { transform: rotate(-45deg) translate(-6px, 7px); }
+            .burgerMenu.active span:nth-child(2) { opacity: 0; }
+            .burgerMenu.active span:nth-child(3) { transform: rotate(45deg) translate(-6px, -7px); }
+            .navigationMenu {display: flex;flex-direction: column;color: #333;background: #fff;position: fixed;top: 81px;left: 0px;width: 100%;padding: 25px 5%;transform: translateX(-100%);transition: transform 0.5s ease-in-out;}
+            .navLink {font-size: 16px;padding-bottom:15px;border-bottom: 1px solid #ccc;width: 100%;text-align: center;}
+            .navLink:last-of-type {border-bottom: none;}
+            /* .burgerMenu {display: flex;background-color: #333;} */
+            .bannerImageSection::before{height: 100%;}
+            .bannerPropertyImage {height: 100%;}
+            .bannerContentSection p {font-size: 16px;}
+            .bannerMainTitle {font-size: 38px;}
+            .bannerMainSubTitle {font-size: 26px;}
+        }
+        @media (max-width:768px) {
+            .bannerContentSection {position: relative;top: 0;left: 0;transform: none;color: #000;text-align: center;margin: 15px auto 0;}
+            .bannerSubtitle {justify-content: center;}
+            .bannerSubtitle::after,.bannerSubtitle::before {background-color: #000;font-size: 16px;}
+            .bannerMainTitle {font-size: 25px;}
+            .bannerContentSection p {font-size: 16px;}
+            .bannerOfferSection {width: fit-content;margin: 10px auto;}
+            .bannerContentPrice {margin: 0 auto 15px;color: #fff;}
+            .bannerFormContainer {position: relative;top: 0;left: 0;transform: none;margin: auto;max-width: 600px;}
+            .bannerFormHeading {font-size: 20px;}
+            .bannerFormInput input, .bannerFormInput select {font-size: 16px;}
+            .bannerSubmit {font-size: 16px;}
+            .consentLabel {font-size: 9px;}
+            .bannerImageSection::before{display: none;}
+        }
+    </style>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="assets/images/logo/logo.png" alt="Logo" width="150" height="auto" loading="eager" fetchpriority="high" class="logo invertImage">
+            <div class="navigationMenu" >
+                <a href="#" class="navLink" >Home</a>
+                <a href="#" class="navLink" >Our Projects</a>
+                <a href="#" class="navLink" >Download Brochure</a>
+                <a href="#" class="navLink" >Enquire Now</a>
+                <a href="#" class="navLink" >Book A Site Visit</a>
+                <!-- <div class="headerContact">
+                    <a href="" class="navbarContact"><img src="assets/images/icons/phoneblack.gif" alt="Instant" loading="lazy" width="25" height="25">Contact</a>
+                    <a href="" class="navbarWhatsapp" target="_blank"><img src="assets/images/icons/whatsappIcon.gif" alt="Chat on" width="25" height="25" loading="lazy">Whatsapp</a>
+            </div> -->
+            </div>
+            
+            <div class="burgerMenu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="bannerSection">
+            <div class="bannerImageSection">
+                <div class="bannerImageCarouselContainer">
+                    <div class="bannerImageSlide">
+                        <picture>
+                            <source srcset="assets/images/banner/mobBanner1.webp" media="(max-width: 768px)">
+                            <img src="assets/images/banner/banner1.webp" alt="Banner" width="100%" height="100%" loading="eager" fetchpriority="high" class="bannerPropertyImage">
+                        </picture>
+                    </div>
+                    <div class="bannerImageSlide">
+                        <picture>
+                            <source srcset="assets/images/banner/mobBanner1.webp" media="(max-width: 768px)">
+                            <img src="assets/images/banner/banner1.webp" alt="Banner" loading="lazy" width="100%" height="100%" class="bannerPropertyImage">
+                        </picture>
+                    </div>
+                    <div class="bannerImageSlide">
+                        <picture>
+                            <source srcset="assets/images/banner/mobBanner1.webp" media="(max-width: 768px)">
+                            <img src="assets/images/banner/banner1.webp" alt="Banner" loading="lazy" width="100%" height="100%" class="bannerPropertyImage">
+                        </picture>
+                    </div>
+                </div>
+                <div class="bannerNavContainer">
+                    <button class="bannerPrev" aria-label="View Previous banner"><i class="fa fa-left" aria-hidden="true"></i></button>
+                    <button class="bannerNext" aria-label="View Next banner image"><i class="fa fa-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+
+            <div class="bannerContentSection">
+                <!-- Banner Content can go here -->
+                 <p class="bannerSubtitle">Booking Open</p>
+                 <h1 class="bannerMainTitle">Brigade Properties</h1>
+                 <h2 class="bannerMainSubTitle">Luxurious 2, 3, 4 BHK properties</h2>
+
+                 <div class="bannerOfferSection">
+                    <p><i class="fa fa-check"></i> Avail Early Booking Benefits</p>
+                    <p><i class="fa fa-check"></i> Booking Offer</p>
+                 </div>
+
+                 <p class="bannerContentPrice"><span>Starting price: </span>49 lacs rupees</p>
+            </div>
+
+            <div class="bannerFormContainer">
+                <form class="bannerForm">
+                    <h2 class="bannerFormHeading">Quick Enquiry!</h2>
+                <div class="bannerFormInput">
+                    <input type="text" name="bannerName" placeholder="Full Name" aria-label="Enter your name" required>
+                </div>
+                <div class="bannerFormInput">
+                        <select name="bannerSelect" required aria-label="Select country code">
+                            <option value="+91" selected>+91 (India)</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+44">+44 (UK)</option>
+                        </select>
+                </div>
+                <div class="bannerFormInput">
+                    <input type="text" name="bannerPhone" placeholder="Mobile Number" aria-label="Enter Mobile Number" required>
+                </div>
+                <div class="bannerFormConsent">
+                    <input type="checkbox" id="consent_checkbox" required checked>
+                    <label for="consent_checkbox" class="consentLabel">I agree to receive communications from Prestige Group.</label>
+                </div>
+                    <input type="submit" value="Submit"  class="bannerSubmit">  
+                </form>
+            </div>
+    </main>
+
+    <section class="offerContainer">
+        <div class="offerCarouselContainer">
+            <div class="offerTrack">
+                <div class="offerSlide">
+                    <picture>
+                        <source srcset="assets/images/offer/offer-mob1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/offer/offer-desk1.webp" alt="Luxury Apartments" loading="lazy" width="100%" height="auto" sizes="(max-width: 768px) 100vw, 75vw" />
+                    </picture>
+                </div>
+                <div class="offerSlide">
+                    <picture>
+                        <source srcset="assets/images/offer/offer-mob2.webp" media="(max-width: 768px)">
+                        <img src="assets/images/offer/offer-desk2.webp" alt="Luxury Apartments" loading="lazy" width="100%" height="auto" sizes="(max-width: 768px) 100vw, 75vw" />
+                    </picture>
+                </div>
+                <div class="offerSlide">
+                    <picture>
+                        <source srcset="assets/images/offer/offer-mob3.webp" media="(max-width: 768px)">
+                        <img src="assets/images/offer/offer-desk3.webp" alt="Luxury Apartments" loading="lazy" width="100%" height="auto" sizes="(max-width: 768px) 100vw, 75vw" />
+                    </picture>
+                </div>
+            </div>
+            <div class="offerNav">
+                <button class="offerPrev"><i class="fa fa-left" aria-hidden="true"></i></button>
+                <button class="offerNext"><i class="fa fa-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="property-cards-container hideContainer">
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="image-container">
+                    <picture>
+                        <source srcset="assets/images/cardbanner/card1.webp" media="(max-width: 768px)">
+                        <img src="assets/images/cardbanner/card-lg-1.webp" alt="Property" class="property-image" loading="lazy" width="100" height="100">
+                    </picture>
+                    <div class="rera-badge">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <span>RERA</span>
+                    </div>
+                    <div class="view-count">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>20K</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="developer-info">
+                        <img src="assets/images/logo/prestige-favicon.webp" width="15" height="15" alt="favicon" loading="lazy">
+                        <span class="developer-name">Prestige Group</span>
+                    </div>
+
+                    <p class="property-title">Prestige Southern Star</p>
+
+                    <div class="location">
+                        <i class="fa fa-location"></i>
+                        <span>At Bannerghatta Road</span>
+                    </div>
+
+                    <div class="property-details">
+                        <div class="detail-item">
+                            <i class="fa fa-type"></i>
+                            <span class="detail-text">3 & 4 BHK</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fa fa-carpet"></i>
+                            <span class="detail-text">1463 Sqft.</span>
+                        </div>
+                    </div>
+
+                    <div class="price-range">₹ 1.81 Cr* Onwards</div>
+                    <button class="enquire-now-btn popup-trigger" data-subheading="Enquire Now">Enquire Now</button>
+                </div>
+            </div>
+
+            <div class="property-card MoreCards">
+                <button class="viewMoreButton">
+                    <span>View More Properties</span>
+                    <img src="assets/images/icons/arrow-right-round.svg" alt="More" width="30" height="30" loading="lazy">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class=footer-container role=contentinfo aria-label=Footer id=footer>
+<div class=footer-rera-info>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Project registered under Government of India RERA Act 2016 |
+<a href=https://maharera.maharashtra.gov.in target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>
+www.maharera.maharashtra.gov.in
+</a>
+</span>
+</div>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Government RERA Authorised Advertiser: Homesfy Realty Ltd, Registration No - A51900000136
+</span>
+</div>
+<div class=footer-rera-item>
+<span class=footer-rera-checkmark aria-hidden=true>✔</span>
+<span class=footer-rera-text>
+Project RERA: 
+<span class="clampText">
+<ul style="list-style-position: outside;padding: 0 15px;">
+    <li>Hiranandani Fortune City : Iris - P52000050194 | Acacia - P52000050196</li>
+    <li>Raheja Jade City : P51700080277</li>
+    <li>Godrej Green Terraces : P52000026790 | P52000030367 | P52000049669 | P52000056268 | P5200052251</li>
+    <li>L&T West Square Seawoods : PHASE 1 - P51700020275, JASPER AT WEST SQUARE - P51700045793, OPAL AT L&T WEST SQUARE SEAWOODS - P51700045794, AMBER AT L&T WEST SQUARE - P51700045795, NORTH TOWERS - P51700026653, West Square - P51700056254</li>
+    <li>Raheja Lunaris: P51700076867</li>
+    <li>Godrej Eternal Palms: PM1330002500429</li>
+    <li>Wadhwa THe Haven Panvel : Phase 1 MahaRERA - P52000052619</li>
+    <li>Kalpataru Aria: P52000047146 | P52000050704 | P52000051573</li>
+    <li>Godrej Woodside Estate: P52000077384 and P52000077385</li>
+</ul>
+</span>
+<br>
+<a href="#" class="readMoreLink"><span>Show More</span><img src="assets/images/icons/arrow.webp" loading="lazy" width="18" height="18"></a>
+</span>
+</div>
+</div>
+<!-- <br> -->
+<div>
+<p class=footer-disclaimer-text>
+<strong>Disclaimer: </strong> We're an authorized marketing channel partner (Homesfy Realty Ltd). The provided content, images & video are sourced from respective owners and are provided only for information purposes, it does not constitute an offer to buy any service. The price plans are subject to change without prior notice, and the properties mentioned are subject to availability. You can receive a call, SMS, or emails on contact details registered with us.
+</p>
+</div>
+<div class=footer-links-container>
+&copy; Copyright
+<span class=footer-separator>|</span>
+<a href=https://www.homesfy.co.in/privacy.html target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>Privacy Policy</a>
+<span class=footer-separator>|</span>
+<a href=https://www.homesfy.co.in/terms.html target=_blank rel="noopener noreferrer" class=footer-rera-link role=link>Terms & Conditions</a>
+</div>
+</footer>
+
+
+            <div class="popup-overlay" id="propertyPopup" style="display: none;">
+                <div class="popup-content">
+                    <button class="popup-close" id="closePopup" aria-label="Close popup"><i class="fa fa-close"></i></button>
+                    
+                    <div class="popup-header">
+                        <div class="popup-header-content">
+                        <!-- <img src="" alt="Property Logo" class="popup-logo" id="popupLogo"> -->
+                            <div class="popup-property-details">
+                                <h3 id="popupPropertyName"></h3>
+                                <p id="popupPropertyLocation"></p>
+                                <p id="popupPropertyType"></p>
+                                <p id="popupPropertyPrice"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="popup-body">
+                            
+                        <h2 class="popup-title">Express Your Interest!</h2>
+                        
+                        <form class="popup-form" id="popupForm">
+                            <div class="popup-form-group">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            
+                            <div class="popup-form-group">
+                                <select name="countryCode" class="country-code">
+                                    <option value="+91" selected>+91</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+44">+44</option>
+                                </select>
+                            </div>
+
+                            <div class="popup-form-group">
+                                <input type="text" name="phone" placeholder="Mobile Number" required>
+                            </div>
+                            
+                            <div class="bannerFormConsent">
+                    <input type="checkbox" id="consent_checkbox" required checked>
+                    <label for="consent_checkbox" class="consentLabel" style="color: #333;">I agree to receive communications from Prestige Group.</label>
+                </div>
+                            
+                            <button type="submit" class="popup-submit">Request A Call</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+
+    <script src="assets/js/script.js"></script>
+
+    <script>
+
+    // Extract property data from card
+    function getPropertyData(card) {
+        const title = card.querySelector('.property-title');
+        const location = card.querySelector('.location span');
+        const propertyType = card.querySelector('.property-details .detail-item .detail-text');
+        const price = card.querySelector('.price-range');
+        
+        return {
+            title: title ? title.textContent.trim() : '',
+            location: location ? location.textContent.trim() : '',
+            type: propertyType ? propertyType.textContent.trim() : '',
+            price: price ? price.textContent.trim() : ''
+        };
+    }
+
+    // Show popup with property data
+    function showPopup(propertyData) {
+        const popup = document.getElementById('propertyPopup');
+        const name = document.getElementById('popupPropertyName');
+        const location = document.getElementById('popupPropertyLocation');
+        const type = document.getElementById('popupPropertyType');
+        const price = document.getElementById('popupPropertyPrice')
+        
+        name.textContent = propertyData.title;
+        location.textContent = propertyData.location;
+        type.textContent = propertyData.type;
+        price.textContent = propertyData.price
+        
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Hide popup
+    function hidePopup() {
+        const popup = document.getElementById('propertyPopup');
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Initialize
+    function init() {
+        // createPopup();
+        
+        // Add click listeners to property cards
+        const propertyCards = document.querySelectorAll('.property-card');
+        propertyCards.forEach(card => {
+            // Skip the "More Cards" card
+            if (card.classList.contains('MoreCards')) return;
+            
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking on enquire button directly
+                if (e.target.classList.contains('enquire-now-btn') || 
+                    e.target.classList.contains('popup-trigger')) {
+                    return;
+                }
+                
+                const propertyData = getPropertyData(card);
+                showPopup(propertyData);
+            });
+        });
+        
+        // Also handle existing popup-trigger buttons
+        const popupTriggers = document.querySelectorAll('.popup-trigger');
+        popupTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.property-card');
+                const propertyData = getPropertyData(card);
+                showPopup(propertyData);
+            });
+        });
+        
+        // Close popup handlers
+        document.getElementById('closePopup').addEventListener('click', hidePopup);
+        
+        document.getElementById('propertyPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hidePopup();
+            }
+        });
+        
+        // ESC key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hidePopup();
+            }
+        });
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    </script>
+</body>
+</html>
